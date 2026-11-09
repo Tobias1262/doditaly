@@ -1,25 +1,64 @@
-
 "use strict";
+// NOVEDADES: añadir objetos { titulo: {ca: "...", es: "...", ...}, texto: {ca: "...", es: "...", ...} }.
+// Incluir las ocho traducciones para cada publicación. Vacío = sin anuncios.
+const novedades = [{
+ titulo: {ca:"Menú italià · 3 passos", es:"Menú italiano · 3 pasos", it:"Menù italiano · 3 portate", en:"Italian menu · 3 courses", fr:"Menu italien · 3 étapes", de:"Italienisches Menü · 3 Gänge", ru:"Итальянское меню · 3 блюда", pt:"Menu italiano · 3 etapas"},
+ texto: {ca:"Antipasto, pasta casolana amb salsa a escollir, postres i beguda. Mínim dues persones. Consulta el preu i la disponibilitat al local.", es:"Antipasto, pasta casera con salsa a elección, postre y bebida. Mínimo dos personas. Consulta el precio y la disponibilidad en el local.", it:"Antipasto, pasta fatta in casa con salsa a scelta, dolce e bevanda. Minimo due persone. Chiedi prezzo e disponibilità al locale.", en:"Antipasto, homemade pasta with your choice of sauce, dessert and a drink. Minimum two people. Ask in the restaurant for price and availability.", fr:"Antipasto, pâtes maison avec sauce au choix, dessert et boisson. Minimum deux personnes. Prix et disponibilité à demander sur place.", de:"Antipasto, hausgemachte Pasta mit Sauce nach Wahl, Dessert und Getränk. Mindestens zwei Personen. Preis und Verfügbarkeit bitte im Lokal erfragen.", ru:"Антипасто, домашняя паста с соусом на выбор, десерт и напиток. Минимум два человека. Цену и наличие уточняйте в заведении.", pt:"Antipasto, massa caseira com molho à escolha, sobremesa e bebida. Mínimo duas pessoas. Consulte o preço e a disponibilidade no local."}
+}];
+const interfaz = {
+ ca: ["Novetats", "Escriu una ressenya a Google", "Torna a dalt", "Aviat hi haurà novetats."],
+ es: ["Novedades", "Escribe una reseña en Google", "Volver arriba", "Próximamente habrá novedades."],
+ it: ["Novità", "Scrivi una recensione su Google", "Torna su", "Presto nuove notizie."],
+ en: ["News", "Write a Google review", "Back to top", "News coming soon."],
+ fr: ["Actualités", "Laisser un avis sur Google", "Retour en haut", "Des nouvelles prochainement."],
+ de: ["Neuigkeiten", "Bei Google bewerten", "Nach oben", "Bald gibt es Neuigkeiten."],
+ ru: ["Новости", "Оставить отзыв в Google", "Наверх", "Скоро здесь появятся новости."],
+ pt: ["Novidades", "Escrever uma avaliação no Google", "Voltar ao topo", "Novidades em breve."]
+};
 
-// DODITALY - MENU MULTILINGÜE
-// Orden de traducciones:
-// ES, IT, EN, FR, DE, CA, RU, PT
 
-const idiomas = ["es", "it", "en", "fr", "de", "ca", "ru", "pt"];
-let idioma = "es";
+
+// =====================================
+// DODITALY - MENÚ MULTILINGÜE
+// =====================================
+
+// IMPORTANTE:
+// Este orden corresponde a las traducciones
+// de cada producto. NO modificar.
+const idiomas = [
+  "es", "it", "en", "fr",
+  "de", "ca", "ru", "pt"
+];
+
+let idioma = "ca";
 let categoriaActual = "todos";
 
+// Crear traducciones en ocho idiomas.
 function T(...valores) {
   return valores;
 }
 
+// Obtener traducción según idioma.
 function traducir(valor) {
-  if (typeof valor === "string") return valor;
-  if (!Array.isArray(valor)) return "";
-  return valor[idiomas.indexOf(idioma)] || valor[0] || "";
+  if (typeof valor === "string") {
+    return valor;
+  }
+
+  if (!Array.isArray(valor)) {
+    return "";
+  }
+
+  return valor[idiomas.indexOf(idioma)]
+    || valor[0]
+    || "";
 }
 
+// =====================================
+// TEXTOS GENERALES
+// =====================================
+
 const textos = {
+
   portada: T(
     "Sabores auténticos de Italia",
     "Sapori autentici d'Italia",
@@ -30,28 +69,51 @@ const textos = {
     "Настоящие вкусы Италии",
     "Sabores autênticos de Itália"
   ),
+
   idioma: T(
-    "Elegí tu idioma", "Scegli la tua lingua",
-    "Choose your language", "Choisissez votre langue",
-    "Wählen Sie Ihre Sprache", "Tria el teu idioma",
-    "Выберите язык", "Escolha o seu idioma"
+    "Elegí tu idioma",
+    "Scegli la tua lingua",
+    "Choose your language",
+    "Choisissez votre langue",
+    "Wählen Sie Ihre Sprache",
+    "Tria el teu idioma",
+    "Выберите язык",
+    "Escolha o seu idioma"
   ),
+
   buscar: T(
-    "¿Qué te apetece hoy?", "Cosa ti va oggi?",
-    "What would you like today?", "Qu'est-ce qui vous tente ?",
-    "Worauf haben Sie heute Lust?", "Què et ve de gust avui?",
-    "Что бы вы хотели сегодня?", "O que lhe apetece hoje?"
+    "¿Qué te apetece hoy?",
+    "Cosa ti va oggi?",
+    "What would you like today?",
+    "Qu'est-ce qui vous tente ?",
+    "Worauf haben Sie heute Lust?",
+    "Què et ve de gust avui?",
+    "Что бы вы хотели сегодня?",
+    "O que lhe apetece hoje?"
   ),
+
   placeholder: T(
-    "Buscar productos...", "Cerca prodotti...",
-    "Search products...", "Rechercher des produits...",
-    "Produkte suchen...", "Cerca productes...",
-    "Поиск блюд...", "Pesquisar produtos..."
+    "Buscar productos...",
+    "Cerca prodotti...",
+    "Search products...",
+    "Rechercher des produits...",
+    "Produkte suchen...",
+    "Cerca productes...",
+    "Поиск блюд...",
+    "Pesquisar produtos..."
   ),
+
   todos: T(
-    "Todo", "Tutto", "All", "Tout",
-    "Alle", "Tot", "Все", "Tudo"
+    "Todo",
+    "Tutto",
+    "All",
+    "Tout",
+    "Alle",
+    "Tot",
+    "Все",
+    "Tudo"
   ),
+
   sinResultados: T(
     "No encontramos productos con ese nombre.",
     "Nessun prodotto trovato.",
@@ -62,19 +124,40 @@ const textos = {
     "Ничего не найдено.",
     "Nenhum produto encontrado."
   ),
+
   llevar: T(
-    "Para llevar", "Da asporto", "Takeaway",
-    "À emporter", "Zum Mitnehmen", "Per emportar",
-    "С собой", "Para levar"
+    "Para llevar",
+    "Da asporto",
+    "Takeaway",
+    "À emporter",
+    "Zum Mitnehmen",
+    "Per emportar",
+    "С собой",
+    "Para levar"
   ),
+
   botella: T(
-    "Botella", "Bottiglia", "Bottle", "Bouteille",
-    "Flasche", "Ampolla", "Бутылка", "Garrafa"
+    "Botella",
+    "Bottiglia",
+    "Bottle",
+    "Bouteille",
+    "Flasche",
+    "Ampolla",
+    "Бутылка",
+    "Garrafa"
   ),
+
   copa: T(
-    "Copa", "Calice", "Glass", "Verre",
-    "Glas", "Copa", "Бокал", "Copo"
+    "Copa",
+    "Calice",
+    "Glass",
+    "Verre",
+    "Glas",
+    "Copa",
+    "Бокал",
+    "Copo"
   ),
+
   aviso: T(
     "Información y alérgenos",
     "Informazioni e allergeni",
@@ -85,6 +168,7 @@ const textos = {
     "Информация и аллергены",
     "Informações e alergénios"
   ),
+
   avisoTexto: T(
     "Consultá con nuestro personal antes de pedir si tenés alergias o intolerancias alimentarias.",
     "In caso di allergie o intolleranze alimentari, consulta il personale prima di ordinare.",
@@ -95,6 +179,7 @@ const textos = {
     "Если у вас есть пищевая аллергия или непереносимость, сообщите персоналу перед заказом.",
     "Se tiver alergias ou intolerâncias alimentares, consulte a nossa equipa antes de pedir."
   ),
+
   gluten: T(
     "Los productos sin gluten pueden estar expuestos a contaminación cruzada.",
     "I prodotti senza glutine possono essere soggetti a contaminazione crociata.",
@@ -107,20 +192,208 @@ const textos = {
   )
 };
 
-// Cada producto:
-// nombre, descripción, precio, precio para llevar opcional.
-// Las descripciones son arrays con 8 traducciones.
+// =====================================
+// FUNCIÓN PARA CREAR PRODUCTOS
+// =====================================
 
-function P(nombre, descripcion, precio, llevar = null) {
-  return { nombre, descripcion, precio, llevar };
+function P(
+  nombre,
+  descripcion,
+  precio,
+  llevar = null
+) {
+  return {
+    nombre,
+    descripcion,
+    precio,
+    llevar
+  };
 }
 
+// =====================================
+// CARTA DODITALY
+// =====================================
+
+// Las categorías comienzan en el bloque 2.
+
 const carta = [
+
+  // =====================================
+  // 1. ENTRANTES
+  // =====================================
+
+  {
+    id: "antipasti",
+
+    nombre: T(
+      "Entrantes",
+      "Antipasti",
+      "Starters",
+      "Entrées",
+      "Vorspeisen",
+      "Entrants",
+      "Закуски",
+      "Entradas"
+    ),
+
+    imagen: "images/burrata.jpg",
+
+    productos: [
+
+      P("Burrata Pugliese", T(
+        "Queso burrata acompañado de hojas verdes y tomates.",
+        "Burrata pugliese accompagnata da insalata mista e pomodori.",
+        "Puglian burrata cheese served with mixed greens and tomatoes.",
+        "Burrata des Pouilles accompagnée de salade verte et de tomates.",
+        "Burrata aus Apulien mit Blattsalat und Tomaten.",
+        "Burrata de la Pulla amb fulles verdes i tomàquets.",
+        "Буррата из Апулии с зеленью и помидорами.",
+        "Burrata da Apúlia acompanhada de salada verde e tomate."
+      ), "14,50 €"),
+
+      P("Carpaccio de Bresaola", T(
+        "Ternera curada, rúcula, parmesano y aderezo de limón.",
+        "Bresaola di manzo, rucola, parmigiano e condimento al limone.",
+        "Cured beef bresaola, rocket, Parmesan and lemon dressing.",
+        "Bresaola de bœuf, roquette, parmesan et vinaigrette au citron.",
+        "Luftgetrocknetes Rindfleisch, Rucola, Parmesan und Zitronendressing.",
+        "Vedella curada, ruca, parmesà i amaniment de llimona.",
+        "Вяленая говядина, руккола, пармезан и лимонная заправка.",
+        "Carne de vaca curada, rúcula, parmesão e molho de limão."
+      ), "14,50 €"),
+
+      P("Ensalada Caprese", T(
+        "Tomate, mozzarella de búfala, hojas verdes, aceitunas y pesto.",
+        "Pomodoro, mozzarella di bufala, insalata mista, olive e pesto.",
+        "Tomato, buffalo mozzarella, mixed greens, olives and pesto.",
+        "Tomate, mozzarella de bufflonne, salade verte, olives et pesto.",
+        "Tomate, Büffelmozzarella, Blattsalat, Oliven und Pesto.",
+        "Tomàquet, mozzarella de búfala, fulles verdes, olives i pesto.",
+        "Помидоры, буйволиная моцарелла, зелень, оливки и песто.",
+        "Tomate, mozzarella de búfala, salada verde, azeitonas e pesto."
+      ), "14,00 €"),
+
+      P("Ensalada César", T(
+        "Hojas verdes, pollo, parmesano, pan tostado y salsa César.",
+        "Insalata mista, pollo, parmigiano, crostini e salsa Caesar.",
+        "Mixed greens, chicken, Parmesan, croutons and Caesar dressing.",
+        "Salade verte, poulet, parmesan, croûtons et sauce César.",
+        "Blattsalat, Hähnchen, Parmesan, Croutons und Caesar-Dressing.",
+        "Fulles verdes, pollastre, parmesà, crostons i salsa Cèsar.",
+        "Листовой салат, курица, пармезан, гренки и соус Цезарь.",
+        "Salada verde, frango, parmesão, croutons e molho César."
+      ), "14,00 €"),
+
+      P("Vitello Tonnato", T(
+        "Ternera con salsa de atún y alcaparras.",
+        "Vitello con salsa tonnata e capperi.",
+        "Veal with tuna sauce and capers.",
+        "Veau à la sauce au thon et aux câpres.",
+        "Kalbfleisch mit Thunfischsauce und Kapern.",
+        "Vedella amb salsa de tonyina i tàperes.",
+        "Телятина под соусом из тунца с каперсами.",
+        "Vitela com molho de atum e alcaparras."
+      ), "15,00 €"),
+
+      P("Melanzane alla Parmigiana", T(
+        "Berenjenas con salsa de tomate, mozzarella y parmesano.",
+        "Melanzane con salsa di pomodoro, mozzarella e parmigiano.",
+        "Aubergines with tomato sauce, mozzarella and Parmesan.",
+        "Aubergines à la sauce tomate, mozzarella et parmesan.",
+        "Auberginen mit Tomatensauce, Mozzarella und Parmesan.",
+        "Albergínies amb salsa de tomàquet, mozzarella i parmesà.",
+        "Баклажаны с томатным соусом, моцареллой и пармезаном.",
+        "Beringela com molho de tomate, mozzarella e parmesão."
+      ), "16,00 €")
+
+    ]
+  },
+
+  // =====================================
+  // 2. TABLAS ITALIANAS
+  // =====================================
+
+  {
+    id: "tablas",
+
+    nombre: T(
+      "Tablas italianas",
+      "Taglieri",
+      "Italian sharing boards",
+      "Planches italiennes",
+      "Italienische Platten",
+      "Taules italianes",
+      "Итальянские ассорти",
+      "Tábuas italianas"
+    ),
+
+    imagen: "images/tagliere.jpg",
+
+    productos: [
+
+      P(T(
+        "Embutidos",
+        "Salumi",
+        "Cured meats",
+        "Charcuteries",
+        "Wurstwaren",
+        "Embotits",
+        "Мясные деликатесы",
+        "Enchidos"
+      ), T(
+        "Selección de embutidos italianos, aceitunas y pan de focaccia casera.",
+        "Selezione di salumi italiani, olive e focaccia fatta in casa.",
+        "Selection of Italian cured meats, olives and homemade focaccia bread.",
+        "Sélection de charcuteries italiennes, olives et focaccia maison.",
+        "Auswahl italienischer Wurstwaren, Oliven und hausgemachte Focaccia.",
+        "Selecció d'embotits italians, olives i focaccia casolana.",
+        "Ассорти итальянских мясных деликатесов, оливки и домашняя фокачча.",
+        "Seleção de enchidos italianos, azeitonas e focaccia caseira."
+      ), "16,50 €"),
+
+      P("Formaggi", T(
+        "Selección de quesos italianos, aceitunas y pan de focaccia casera.",
+        "Selezione di formaggi italiani, olive e focaccia fatta in casa.",
+        "Selection of Italian cheeses, olives and homemade focaccia bread.",
+        "Sélection de fromages italiens, olives et focaccia maison.",
+        "Auswahl italienischer Käsesorten, Oliven und hausgemachte Focaccia.",
+        "Selecció de formatges italians, olives i focaccia casolana.",
+        "Ассорти итальянских сыров, оливки и домашняя фокачча.",
+        "Seleção de queijos italianos, azeitonas e focaccia caseira."
+      ), "18,00 €"),
+
+      P("Tagliere Misto", T(
+        "Selección de embutidos y quesos italianos, aceitunas y pan de focaccia casera.",
+        "Selezione di salumi e formaggi italiani, olive e focaccia fatta in casa.",
+        "Selection of Italian cured meats and cheeses, olives and homemade focaccia bread.",
+        "Sélection de charcuteries et fromages italiens, olives et focaccia maison.",
+        "Auswahl italienischer Wurst- und Käsesorten, Oliven und hausgemachte Focaccia.",
+        "Selecció d'embotits i formatges italians, olives i focaccia casolana.",
+        "Ассорти итальянских мясных деликатесов и сыров, оливки и домашняя фокачча.",
+        "Seleção de enchidos e queijos italianos, azeitonas e focaccia caseira."
+      ), "29,00 €")
+
+    ]
+  },
+
+
+  // =====================================
+  // 3. FOCACCIAS
+  // =====================================
+
   {
     id: "focaccias",
-    nombre: T("Focaccias", "Focacce", "Focaccias", "Focaccias", "Focaccias", "Focaccies", "Фокачча", "Focaccias"),
-    imagen: "images/focaccia.jpg",
+
+    nombre: T(
+      "Focaccias", "Focacce", "Focaccias",
+      "Focaccias", "Focaccias", "Focaccies",
+      "Фокачча", "Focaccias"
+    ),
+
+    imagen: "images/focaccias.jpeg",
+
     productos: [
+
       P("Danilo", T(
         "Bresaola de ternera, alcachofas en aceite, stracciatella de burrata y crema de pesto.",
         "Bresaola di manzo, carciofi sott'olio, stracciatella di burrata e crema al pesto.",
@@ -219,24 +492,32 @@ const carta = [
         "Отбивная в панировке по-пиццайольски, томатный соус, варёная ветчина, запечённая моцарелла и зелень.",
         "Panado à pizzaiola, molho de tomate, fiambre, mozzarella gratinada e folhas verdes."
       ), "15,00 €", "11,50 €")
+
     ]
   },
 
+  // =====================================
+  // 4. PINSAS
+  // =====================================
+
   {
     id: "pinsas",
-    nombre: T("Pinsas", "Pinse", "Roman pinsas", "Pinsas romaines", "Römische Pinsa", "Pinses romanes", "Римская пинса", "Pinsas romanas"),
-    imagen: "images/pinsa.jpg",
-    nota: T(
-      "Cada pinsa lleva los ingredientes de la focaccia del mismo nombre.",
-      "Ogni pinsa contiene gli ingredienti della focaccia con lo stesso nome.",
-      "Each pinsa has the same ingredients as the focaccia of the same name.",
-      "Chaque pinsa contient les mêmes ingrédients que la focaccia du même nom.",
-      "Jede Pinsa enthält die Zutaten der gleichnamigen Focaccia.",
-      "Cada pinsa porta els ingredients de la focaccia del mateix nom.",
-      "Каждая пинса содержит те же ингредиенты, что и одноимённая фокачча.",
-      "Cada pinsa tem os mesmos ingredientes da focaccia com o mesmo nome."
+
+    nombre: T(
+      "Pinsas",
+      "Pinse",
+      "Roman pinsas",
+      "Pinsas romaines",
+      "Römische Pinsa",
+      "Pinses romanes",
+      "Римская пинса",
+      "Pinsas romanas"
     ),
+
+    imagen: "images/pinsas.jpeg",
+
     productos: [
+
       P("Danilo", "", "15,00 €"),
       P("Domenico", "", "15,00 €"),
       P("Fabrizio", "", "15,00 €"),
@@ -244,127 +525,44 @@ const carta = [
       P("Giacomo", "", "14,00 €"),
       P("Giovanni", "", "15,00 €"),
       P("Salvatore", "", "15,00 €"),
-      P("Giuseppe", "", "16,00 €")
+      P("Giuseppe", "", "16,00 €"),
+
+      // PENDIENTE:
+      // Confirmar ingredientes y precio de Margherita.
+      P("Margherita", "", "Consultar precio"),
+
+      // PENDIENTE:
+      // Confirmar ingredientes y tipo de prosciutto.
+      P(
+        "Margherita con prosciutto",
+        "",
+        "15,00 €"
+      )
+
     ]
   },
 
-  {
-    id: "antipasti",
-    nombre: T("Entrantes", "Antipasti", "Starters", "Entrées", "Vorspeisen", "Entrants", "Закуски", "Entradas"),
-    imagen: "images/burrata.jpg",
-    productos: [
-      P("Burrata Pugliese", T(
-        "Queso burrata acompañado de hojas verdes y tomates.",
-        "Burrata pugliese accompagnata da insalata mista e pomodori.",
-        "Puglian burrata cheese served with mixed greens and tomatoes.",
-        "Burrata des Pouilles accompagnée de salade verte et de tomates.",
-        "Burrata aus Apulien mit Blattsalat und Tomaten.",
-        "Burrata de la Pulla amb fulles verdes i tomàquets.",
-        "Буррата из Апулии с зеленью и помидорами.",
-        "Burrata da Apúlia acompanhada de salada verde e tomate."
-      ), "14,50 €"),
 
-      P("Carpaccio de Bresaola", T(
-        "Ternera curada, rúcula, parmesano y aderezo de limón.",
-        "Bresaola di manzo, rucola, parmigiano e condimento al limone.",
-        "Cured beef bresaola, rocket, Parmesan and lemon dressing.",
-        "Bresaola de bœuf, roquette, parmesan et vinaigrette au citron.",
-        "Luftgetrocknetes Rindfleisch, Rucola, Parmesan und Zitronendressing.",
-        "Vedella curada, ruca, parmesà i amaniment de llimona.",
-        "Вяленая говядина, руккола, пармезан и лимонная заправка.",
-        "Carne de vaca curada, rúcula, parmesão e molho de limão."
-      ), "14,50 €"),
-
-      P("Ensalada Caprese", T(
-        "Tomate, mozzarella de búfala, hojas verdes, aceitunas y pesto.",
-        "Pomodoro, mozzarella di bufala, insalata mista, olive e pesto.",
-        "Tomato, buffalo mozzarella, mixed greens, olives and pesto.",
-        "Tomate, mozzarella de bufflonne, salade verte, olives et pesto.",
-        "Tomate, Büffelmozzarella, Blattsalat, Oliven und Pesto.",
-        "Tomàquet, mozzarella de búfala, fulles verdes, olives i pesto.",
-        "Помидоры, буйволиная моцарелла, зелень, оливки и песто.",
-        "Tomate, mozzarella de búfala, salada verde, azeitonas e pesto."
-      ), "14,00 €"),
-
-      P("Ensalada César", T(
-        "Hojas verdes, pollo, parmesano, pan tostado y salsa César.",
-        "Insalata mista, pollo, parmigiano, crostini e salsa Caesar.",
-        "Mixed greens, chicken, Parmesan, croutons and Caesar dressing.",
-        "Salade verte, poulet, parmesan, croûtons et sauce César.",
-        "Blattsalat, Hähnchen, Parmesan, Croutons und Caesar-Dressing.",
-        "Fulles verdes, pollastre, parmesà, crostons i salsa Cèsar.",
-        "Листовой салат, курица, пармезан, гренки и соус Цезарь.",
-        "Salada verde, frango, parmesão, croutons e molho César."
-      ), "14,00 €"),
-
-      P("Vitello Tonnato", T(
-        "Ternera con salsa de atún y alcaparras.",
-        "Vitello con salsa tonnata e capperi.",
-        "Veal with tuna sauce and capers.",
-        "Veau à la sauce au thon et aux câpres.",
-        "Kalbfleisch mit Thunfischsauce und Kapern.",
-        "Vedella amb salsa de tonyina i tàperes.",
-        "Телятина под соусом из тунца с каперсами.",
-        "Vitela com molho de atum e alcaparras."
-      ), "15,00 €"),
-
-      P("Melanzane alla Parmigiana", T(
-        "Berenjenas con salsa de tomate, mozzarella y parmesano.",
-        "Melanzane con salsa di pomodoro, mozzarella e parmigiano.",
-        "Aubergines with tomato sauce, mozzarella and Parmesan.",
-        "Aubergines à la sauce tomate, mozzarella et parmesan.",
-        "Auberginen mit Tomatensauce, Mozzarella und Parmesan.",
-        "Albergínies amb salsa de tomàquet, mozzarella i parmesà.",
-        "Баклажаны с томатным соусом, моцареллой и пармезаном.",
-        "Beringela com molho de tomate, mozzarella e parmesão."
-      ), "16,00 €")
-    ]
-  },
-
-  {
-    id: "tablas",
-    nombre: T("Tablas italianas", "Taglieri", "Italian sharing boards", "Planches italiennes", "Italienische Platten", "Taules italianes", "Итальянские ассорти", "Tábuas italianas"),
-    imagen: "images/tagliere.jpg",
-    productos: [
-      P(T("Embutidos", "Salumi", "Cured meats", "Charcuteries", "Wurstwaren", "Embotits", "Мясные деликатесы", "Enchidos"), T(
-        "Selección de embutidos italianos, aceitunas y pan de focaccia.",
-        "Selezione di salumi italiani, olive e focaccia.",
-        "Selection of Italian cured meats, olives and focaccia bread.",
-        "Sélection de charcuteries italiennes, olives et focaccia.",
-        "Auswahl italienischer Wurstwaren, Oliven und Focaccia.",
-        "Selecció d'embotits italians, olives i pa de focaccia.",
-        "Ассорти итальянских мясных деликатесов, оливки и фокачча.",
-        "Seleção de enchidos italianos, azeitonas e focaccia."
-      ), "16,50 €"),
-
-      P("Formaggi", T(
-        "Selección de quesos italianos, mermelada de tomate, aceitunas y focaccia.",
-        "Selezione di formaggi italiani, confettura di pomodoro, olive e focaccia.",
-        "Selection of Italian cheeses, tomato jam, olives and focaccia.",
-        "Sélection de fromages italiens, confiture de tomate, olives et focaccia.",
-        "Auswahl italienischer Käsesorten, Tomatenkonfitüre, Oliven und Focaccia.",
-        "Selecció de formatges italians, melmelada de tomàquet, olives i focaccia.",
-        "Ассорти итальянских сыров, томатный джем, оливки и фокачча.",
-        "Seleção de queijos italianos, doce de tomate, azeitonas e focaccia."
-      ), "18,00 €"),
-
-      P("Tagliere Misto", T(
-        "Selección de embutidos y quesos italianos, aceitunas y focaccia.",
-        "Selezione di salumi e formaggi italiani, olive e focaccia.",
-        "Selection of Italian cured meats and cheeses, olives and focaccia.",
-        "Sélection de charcuteries et fromages italiens, olives et focaccia.",
-        "Auswahl italienischer Wurst- und Käsesorten, Oliven und Focaccia.",
-        "Selecció d'embotits i formatges italians, olives i focaccia.",
-        "Ассорти итальянских мясных деликатесов и сыров, оливки и фокачча.",
-        "Seleção de enchidos e queijos italianos, azeitonas e focaccia."
-      ), "29,00 €")
-    ]
-  },
+  // =====================================
+  // 5. PASTAS
+  // =====================================
 
   {
     id: "pastas",
-    nombre: T("Pastas", "Le Paste", "Pasta", "Pâtes", "Pasta", "Pastes", "Паста", "Massas"),
-    imagen: "images/pasta.jpg",
+
+    nombre: T(
+      "Pastas",
+      "Le Paste",
+      "Pasta",
+      "Pâtes",
+      "Pasta",
+      "Pastes",
+      "Паста",
+      "Massas"
+    ),
+
+    imagen: "images/pastas.jpeg",
+
     nota: T(
       "Salsas a elección: pomodoro, pesto, scarparo, putanesca o ajo, aceite y guindilla.",
       "Salse a scelta: pomodoro, pesto, scarparo, puttanesca o aglio, olio e peperoncino.",
@@ -375,7 +573,9 @@ const carta = [
       "Соусы на выбор: томатный, песто, скарпаро, путтанеска или чеснок с оливковым маслом и чили.",
       "Molhos à escolha: tomate, pesto, scarparo, puttanesca ou alho, azeite e malagueta."
     ),
+
     productos: [
+
       P("Tortellini", T(
         "Pasta fresca rellena de ricotta y espinacas.",
         "Pasta fresca ripiena di ricotta e spinaci.",
@@ -386,6 +586,7 @@ const carta = [
         "Свежая паста с начинкой из рикотты и шпината.",
         "Massa fresca recheada com ricota e espinafres."
       ), "15,00 €"),
+
       P("Rigatoni", T(
         "Pasta seca cocida al dente.",
         "Pasta secca cotta al dente.",
@@ -396,6 +597,7 @@ const carta = [
         "Паста из сухих макарон, приготовленная аль денте.",
         "Massa seca cozida al dente."
       ), "14,00 €"),
+
       P("Lasagna", T(
         "Lasaña con ragú de carne.",
         "Lasagna al ragù di carne.",
@@ -406,13 +608,31 @@ const carta = [
         "Лазанья с мясным рагу.",
         "Lasanha com ragu de carne."
       ), "16,00 €")
+
     ]
   },
 
+  // =====================================
+  // 6. POSTRES
+  // =====================================
+
   {
     id: "postres",
-    nombre: T("Postres", "Dolci", "Desserts", "Desserts", "Desserts", "Postres", "Десерты", "Sobremesas"),
+    imagen: "images/postres.jpeg",
+
+    nombre: T(
+      "Postres",
+      "Dolci",
+      "Desserts",
+      "Desserts",
+      "Desserts",
+      "Postres",
+      "Десерты",
+      "Sobremesas"
+    ),
+
     productos: [
+
       P("Focaccia Nonna Rosa", T(
         "Focaccia rellena de Nutella, pistacho y chocolate.",
         "Focaccia farcita con Nutella, pistacchio e cioccolato.",
@@ -423,6 +643,7 @@ const carta = [
         "Фокачча с начинкой из Нутеллы, фисташек и шоколада.",
         "Focaccia recheada com Nutella, pistácio e chocolate."
       ), "8,00 €"),
+
       P("Il Cannolo di Lorenza", T(
         "Masa crujiente rellena de ricotta, azúcar glas y ralladura de limón.",
         "Cialda croccante ripiena di ricotta, zucchero a velo e scorza di limone.",
@@ -433,6 +654,7 @@ const carta = [
         "Хрустящая трубочка с рикоттой, сахарной пудрой и лимонной цедрой.",
         "Massa crocante recheada com ricota, açúcar em pó e raspa de limão."
       ), "6,00 €"),
+
       P("Il Tiramisù de la Mamma", T(
         "Crema de queso dulce, café con amaretto y bizcocho italiano.",
         "Crema al mascarpone, caffè con amaretto e savoiardi.",
@@ -443,6 +665,7 @@ const carta = [
         "Сладкий сырный крем, кофе с амаретто и итальянское печенье.",
         "Creme de queijo doce, café com amaretto e biscoitos italianos."
       ), "6,00 €"),
+
       P("La Pannacotta de Laura", T(
         "Nata cocida con salsa de chocolate y frutos rojos.",
         "Panna cotta con salsa al cioccolato e frutti di bosco.",
@@ -453,6 +676,7 @@ const carta = [
         "Панна-котта с шоколадным соусом и ягодами.",
         "Natas cozidas com molho de chocolate e frutos vermelhos."
       ), "6,00 €"),
+
       P("Tarta de Queso, Zia Mónica", T(
         "Tarta de queso cremosa con frutos rojos o Nutella.",
         "Cheesecake cremoso con frutti di bosco o Nutella.",
@@ -463,68 +687,310 @@ const carta = [
         "Нежный чизкейк с ягодами или Нутеллой.",
         "Cheesecake cremoso com frutos vermelhos ou Nutella."
       ), "6,00 €")
+
     ]
   },
+
+  // =====================================
+  // 7. CAFÉS
+  // =====================================
 
   {
     id: "cafes",
-    nombre: T("Cafés", "Caffè", "Coffee", "Cafés", "Kaffee", "Cafès", "Кофе", "Cafés"),
+
+    nombre: T(
+      "Cafés",
+      "Caffè",
+      "Coffee",
+      "Cafés",
+      "Kaffee",
+      "Cafès",
+      "Кофе",
+      "Cafés"
+    ),
+
     productos: [
-      P("Café Corretto", T("Espresso con licor.", "Espresso con liquore.", "Espresso with liqueur.", "Expresso avec liqueur.", "Espresso mit Likör.", "Espresso amb licor.", "Эспрессо с ликёром.", "Expresso com licor."), "2,30 €"),
-      P("Café Latte", T("Café con leche.", "Caffè con latte.", "Coffee with milk.", "Café au lait.", "Kaffee mit Milch.", "Cafè amb llet.", "Кофе с молоком.", "Café com leite."), "2,00 €"),
-      P("Cappuccino", T("Café, leche espumada y cacao.", "Caffè, latte montato e cacao.", "Coffee, foamed milk and cocoa.", "Café, lait mousseux et cacao.", "Kaffee, Milchschaum und Kakao.", "Cafè, llet escumada i cacau.", "Кофе, вспененное молоко и какао.", "Café, leite espumado e cacau."), "2,50 €"),
-      P("Espresso", T("Café concentrado.", "Caffè espresso.", "Concentrated coffee.", "Café concentré.", "Konzentrierter Kaffee.", "Cafè concentrat.", "Крепкий кофе.", "Café concentrado."), "1,80 €"),
-      P("Latte Macchiato", T("Leche caliente manchada con café.", "Latte caldo macchiato con caffè.", "Hot milk with a shot of coffee.", "Lait chaud avec une touche de café.", "Heiße Milch mit einem Schuss Kaffee.", "Llet calenta tacada amb cafè.", "Горячее молоко с добавлением кофе.", "Leite quente com um toque de café."), "2,60 €"),
-      P("Ristretto", T("Café corto y concentrado.", "Caffè corto e concentrato.", "Short, concentrated espresso.", "Expresso court et concentré.", "Kurzer, konzentrierter Espresso.", "Cafè curt i concentrat.", "Короткий крепкий эспрессо.", "Expresso curto e concentrado."), "1,80 €")
+
+      P("Café Corretto", T(
+        "Espresso con licor.",
+        "Espresso con liquore.",
+        "Espresso with liqueur.",
+        "Expresso avec liqueur.",
+        "Espresso mit Likör.",
+        "Espresso amb licor.",
+        "Эспрессо с ликёром.",
+        "Expresso com licor."
+      ), "2,30 €"),
+
+      P("Café Latte", T(
+        "Café con leche.",
+        "Caffè con latte.",
+        "Coffee with milk.",
+        "Café au lait.",
+        "Kaffee mit Milch.",
+        "Cafè amb llet.",
+        "Кофе с молоком.",
+        "Café com leite."
+      ), "2,00 €"),
+
+      P("Cappuccino", T(
+        "Café, leche espumada y cacao.",
+        "Caffè, latte montato e cacao.",
+        "Coffee, foamed milk and cocoa.",
+        "Café, lait mousseux et cacao.",
+        "Kaffee, Milchschaum und Kakao.",
+        "Cafè, llet escumada i cacau.",
+        "Кофе, вспененное молоко и какао.",
+        "Café, leite espumado e cacau."
+      ), "2,50 €"),
+
+      P("Espresso", T(
+        "Café concentrado.",
+        "Caffè espresso.",
+        "Concentrated coffee.",
+        "Café concentré.",
+        "Konzentrierter Kaffee.",
+        "Cafè concentrat.",
+        "Крепкий кофе.",
+        "Café concentrado."
+      ), "1,80 €"),
+
+      P("Latte Macchiato", T(
+        "Leche caliente manchada con café.",
+        "Latte caldo macchiato con caffè.",
+        "Hot milk with a shot of coffee.",
+        "Lait chaud avec une touche de café.",
+        "Heiße Milch mit einem Schuss Kaffee.",
+        "Llet calenta tacada amb cafè.",
+        "Горячее молоко с добавлением кофе.",
+        "Leite quente com um toque de café."
+      ), "2,60 €"),
+
+      P("Ristretto", T(
+        "Café corto y concentrado.",
+        "Caffè corto e concentrato.",
+        "Short, concentrated espresso.",
+        "Expresso court et concentré.",
+        "Kurzer, konzentrierter Espresso.",
+        "Cafè curt i concentrat.",
+        "Короткий крепкий эспрессо.",
+        "Expresso curto e concentrado."
+      ), "1,80 €")
+
     ]
   },
+
+
+  // =====================================
+  // 8. REFRESCOS
+  // =====================================
 
   {
     id: "refrescos",
-    nombre: T("Refrescos", "Bibite", "Soft drinks", "Boissons sans alcool", "Alkoholfreie Getränke", "Refrescos", "Безалкогольные напитки", "Refrigerantes"),
+
+    nombre: T(
+      "Refrescos", "Bibite", "Soft drinks",
+      "Boissons sans alcool",
+      "Alkoholfreie Getränke", "Refrescos",
+      "Безалкогольные напитки", "Refrigerantes"
+    ),
+
     productos: [
-      P(T("Agua 0,50 L", "Acqua 0,50 L", "Water 0.50 L", "Eau 0,50 L", "Wasser 0,50 L", "Aigua 0,50 L", "Вода 0,5 л", "Água 0,50 L"), "", "1,90 €"),
+
+      P(T(
+        "Agua 0,50 L", "Acqua 0,50 L",
+        "Water 0.50 L", "Eau 0,50 L",
+        "Wasser 0,50 L", "Aigua 0,50 L",
+        "Вода 0,5 л", "Água 0,50 L"
+      ), "", "1,90 €"),
+
       P("Coca-Cola 0,33 L", "", "2,80 €"),
+
       P("Coca-Cola Zero 0,33 L", "", "2,80 €"),
-      P(T("Fanta naranja / limón", "Fanta arancia / limone", "Fanta orange / lemon", "Fanta orange / citron", "Fanta Orange / Zitrone", "Fanta taronja / llimona", "Фанта апельсин / лимон", "Fanta laranja / limão"), "", "2,80 €"),
+
+      P(T(
+        "Fanta naranja / limón",
+        "Fanta arancia / limone",
+        "Fanta orange / lemon",
+        "Fanta orange / citron",
+        "Fanta Orange / Zitrone",
+        "Fanta taronja / llimona",
+        "Фанта апельсин / лимон",
+        "Fanta laranja / limão"
+      ), "", "2,80 €"),
+
       P("Schweppes Tonic 0,33 L", "", "2,80 €"),
-      P(T("Zumos 0,30 L", "Succhi 0,30 L", "Juices 0.30 L", "Jus 0,30 L", "Säfte 0,30 L", "Sucs 0,30 L", "Соки 0,3 л", "Sumos 0,30 L"), "", "2,60 €")
+
+      P(T(
+        "Zumos 0,30 L",
+        "Succhi 0,30 L",
+        "Juices 0.30 L",
+        "Jus 0,30 L",
+        "Säfte 0,30 L",
+        "Sucs 0,30 L",
+        "Соки 0,3 л",
+        "Sumos 0,30 L"
+      ), "", "2,60 €")
+
     ]
   },
+
+  // =====================================
+  // 9. CERVEZAS
+  // =====================================
 
   {
     id: "cervezas",
-    nombre: T("Cervezas", "Birre", "Beers", "Bières", "Biere", "Cerveses", "Пиво", "Cervejas"),
+
+    nombre: T(
+      "Cervezas", "Birre", "Beers", "Bières",
+      "Biere", "Cerveses", "Пиво", "Cervejas"
+    ),
+
     productos: [
+
       P("Baladin 0,75 L", "", "13,90 €"),
+
       P("Menabrea 0,33 L", "", "3,20 €"),
+
       P("Moretti 0,33 L", "", "2,90 €"),
+
       P("Peroni 0,33 L", "", "2,90 €"),
-      P(T("Caña 0,33 L", "Birra alla spina 0,33 L", "Draft beer 0.33 L", "Bière pression 0,33 L", "Fassbier 0,33 L", "Canya 0,33 L", "Разливное пиво 0,33 л", "Cerveja de pressão 0,33 L"), "", "2,70 €"),
+
+      P(T(
+        "Caña 0,33 L",
+        "Birra alla spina 0,33 L",
+        "Draft beer 0.33 L",
+        "Bière pression 0,33 L",
+        "Fassbier 0,33 L",
+        "Canya 0,33 L",
+        "Разливное пиво 0,33 л",
+        "Cerveja de pressão 0,33 L"
+      ), "", "2,70 €"),
+
       P("Damm Lemon 0,33 L", "", "2,70 €"),
+
       P("Free Damm 0,0 0,33 L", "", "2,80 €")
+
     ]
   },
+
+  // =====================================
+  // 10. VINOS
+  // =====================================
 
   {
     id: "vinos",
-    nombre: T("Vinos", "Vini", "Wines", "Vins", "Weine", "Vins", "Вина", "Vinhos"),
+
+    nombre: T(
+      "Vinos", "Vini", "Wines", "Vins",
+      "Weine", "Vins", "Вина", "Vinhos"
+    ),
+
     productos: [
-      P("Montecillo Verdejo", T("Blanco · D.O. Rueda", "Bianco · D.O. Rueda", "White · Rueda", "Blanc · Rueda", "Weißwein · Rueda", "Blanc · Rueda", "Белое · Руэда", "Branco · Rueda"), "18,00 €", { copa: "3,40 €" }),
-      P("Mas Donis Blanco", T("Blanco · Montsant", "Bianco · Montsant", "White · Montsant", "Blanc · Montsant", "Weißwein · Montsant", "Blanc · Montsant", "Белое · Монсант", "Branco · Montsant"), "17,00 €", { copa: "3,20 €" }),
-      P("Pinot Grigio", T("Blanco · Italia", "Bianco · Italia", "White · Italy", "Blanc · Italie", "Weißwein · Italien", "Blanc · Itàlia", "Белое · Италия", "Branco · Itália"), "19,00 €", { copa: "3,50 €" }),
-      P("Mas Donis Tinto", T("Tinto · Montsant", "Rosso · Montsant", "Red · Montsant", "Rouge · Montsant", "Rotwein · Montsant", "Negre · Montsant", "Красное · Монсант", "Tinto · Montsant"), "17,00 €", { copa: "3,20 €" }),
-      P("Montecillo Crianza", T("Tinto · Rioja", "Rosso · Rioja", "Red · Rioja", "Rouge · Rioja", "Rotwein · Rioja", "Negre · Rioja", "Красное · Риоха", "Tinto · Rioja"), "18,00 €", { copa: "3,40 €" }),
-      P("Primitivo", T("Tinto · Salento, Italia", "Rosso · Salento, Italia", "Red · Salento, Italy", "Rouge · Salento, Italie", "Rotwein · Salento, Italien", "Negre · Salento, Itàlia", "Красное · Саленто, Италия", "Tinto · Salento, Itália"), "19,00 €", { copa: "3,50 €" }),
-      P("Prosecco Millesimato", T("Espumoso · Italia", "Spumante · Italia", "Sparkling · Italy", "Pétillant · Italie", "Schaumwein · Italien", "Escumós · Itàlia", "Игристое · Италия", "Espumante · Itália"), "19,00 €")
+
+      P("Montecillo Verdejo", T(
+        "Blanco · D.O. Rueda",
+        "Bianco · D.O. Rueda",
+        "White · Rueda",
+        "Blanc · Rueda",
+        "Weißwein · Rueda",
+        "Blanc · Rueda",
+        "Белое · Руэда",
+        "Branco · Rueda"
+      ), "18,00 €", { copa: "3,40 €" }),
+
+      P("Mas Donis Blanco", T(
+        "Blanco · Montsant",
+        "Bianco · Montsant",
+        "White · Montsant",
+        "Blanc · Montsant",
+        "Weißwein · Montsant",
+        "Blanc · Montsant",
+        "Белое · Монсант",
+        "Branco · Montsant"
+      ), "17,00 €", { copa: "3,20 €" }),
+
+      P("Pinot Grigio", T(
+        "Blanco · Italia",
+        "Bianco · Italia",
+        "White · Italy",
+        "Blanc · Italie",
+        "Weißwein · Italien",
+        "Blanc · Itàlia",
+        "Белое · Италия",
+        "Branco · Itália"
+      ), "19,00 €", { copa: "3,50 €" }),
+
+      P("Mas Donis Tinto", T(
+        "Tinto · Montsant",
+        "Rosso · Montsant",
+        "Red · Montsant",
+        "Rouge · Montsant",
+        "Rotwein · Montsant",
+        "Negre · Montsant",
+        "Красное · Монсант",
+        "Tinto · Montsant"
+      ), "17,00 €", { copa: "3,20 €" }),
+
+      P("Montecillo Crianza", T(
+        "Tinto · Rioja",
+        "Rosso · Rioja",
+        "Red · Rioja",
+        "Rouge · Rioja",
+        "Rotwein · Rioja",
+        "Negre · Rioja",
+        "Красное · Риоха",
+        "Tinto · Rioja"
+      ), "18,00 €", { copa: "3,40 €" }),
+
+      P("Primitivo", T(
+        "Tinto · Salento, Italia",
+        "Rosso · Salento, Italia",
+        "Red · Salento, Italy",
+        "Rouge · Salento, Italie",
+        "Rotwein · Salento, Italien",
+        "Negre · Salento, Itàlia",
+        "Красное · Саленто, Италия",
+        "Tinto · Salento, Itália"
+      ), "19,00 €", { copa: "3,50 €" }),
+
+      P("Prosecco Millesimato", T(
+        "Espumoso · Italia",
+        "Spumante · Italia",
+        "Sparkling · Italy",
+        "Pétillant · Italie",
+        "Schaumwein · Italien",
+        "Escumós · Itàlia",
+        "Игристое · Италия",
+        "Espumante · Itália"
+      ), "19,00 €")
+
     ]
   },
 
+  // =====================================
+  // 11. CÓCTELES
+  // =====================================
+
   {
     id: "cocteles",
-    nombre: T("Cócteles", "Cocktail e aperitivi", "Cocktails", "Cocktails", "Cocktails", "Còctels", "Коктейли", "Cocktails"),
+
+    nombre: T(
+      "Cócteles",
+      "Cocktail e aperitivi",
+      "Cocktails",
+      "Cocktails",
+      "Cocktails",
+      "Còctels",
+      "Коктейли",
+      "Cocktails"
+    ),
+
     imagen: "images/aperol.jpg",
+
     productos: [
+
       P("Aperol Spritz", T(
         "Aperol, prosecco, soda, naranja y hielo.",
         "Aperol, prosecco, soda, arancia e ghiaccio.",
@@ -535,6 +1001,7 @@ const carta = [
         "Апероль, просекко, содовая, апельсин и лёд.",
         "Aperol, prosecco, soda, laranja e gelo."
       ), "7,00 €"),
+
       P("Bellini", T(
         "Prosecco y zumo de melocotón.",
         "Prosecco e succo di pesca.",
@@ -545,6 +1012,7 @@ const carta = [
         "Просекко и персиковый сок.",
         "Prosecco e sumo de pêssego."
       ), "7,00 €"),
+
       P("Gin Tonic", T(
         "Ginebra Seagram's, tónica y hielo.",
         "Gin Seagram's, acqua tonica e ghiaccio.",
@@ -555,6 +1023,7 @@ const carta = [
         "Джин Seagram's, тоник и лёд.",
         "Gin Seagram's, água tónica e gelo."
       ), "7,50 €"),
+
       P("Il Garibaldi", T(
         "Campari, zumo de naranja y hielo.",
         "Campari, succo d'arancia e ghiaccio.",
@@ -565,6 +1034,7 @@ const carta = [
         "Кампари, апельсиновый сок и лёд.",
         "Campari, sumo de laranja e gelo."
       ), "7,00 €"),
+
       P("Limoncello", T(
         "Licor de limón, 29 % de alcohol.",
         "Liquore al limone, 29% vol.",
@@ -575,6 +1045,7 @@ const carta = [
         "Лимонный ликёр, крепость 29 %.",
         "Licor de limão, 29% vol."
       ), "5,00 €"),
+
       P("Negroni", T(
         "Campari, ginebra Seagram's, vermut rojo y hielo.",
         "Campari, gin Seagram's, vermouth rosso e ghiaccio.",
@@ -585,267 +1056,693 @@ const carta = [
         "Кампари, джин Seagram's, красный вермут и лёд.",
         "Campari, gin Seagram's, vermute tinto e gelo."
       ), "7,00 €")
+
     ]
   }
+
 ];
 
 // =====================================
-// RENDERIZADO Y FUNCIONAMIENTO
+// FIN DE LOS PRODUCTOS DE LA CARTA
 // =====================================
 
-document.addEventListener("DOMContentLoaded", () => {
-  const menu = document.getElementById("menu");
-  const navegacion = document.getElementById("categorias");
-  const buscar = document.getElementById("buscar");
-  const sinResultados = document.getElementById("sin-resultados");
-  const arriba = document.getElementById("arriba");
+/* =========================================
+   DODITALY — BLOQUE 6
+   FUNCIONAMIENTO DEL MENÚ
+========================================= */
 
-  // Escapar texto antes de insertarlo en HTML.
-  function escapar(valor) {
-    return String(valor ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#39;");
-  }
+// =========================================
+// ORDEN DE LAS CATEGORÍAS
+// =========================================
 
-  function normalizar(texto) {
-    return String(texto ?? "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
-  }
+const ordenCategorias = [
+  "antipasti",
+  "tablas",
+  "focaccias",
+  "pinsas",
+  "pastas",
+  "postres",
+  "cafes",
+  "refrescos",
+  "cervezas",
+  "vinos",
+  "cocteles"
+];
 
-  // Recuperar idioma guardado.
-  try {
-    const guardado = localStorage.getItem("doditaly_idioma");
-    if (idiomas.includes(guardado)) idioma = guardado;
-  } catch (error) {
-    // El menú funciona aunque el navegador bloquee almacenamiento.
-  }
+carta.sort((a, b) => {
+  const posicionA = ordenCategorias.indexOf(a.id);
+  const posicionB = ordenCategorias.indexOf(b.id);
 
-  function crearNavegacion() {
-    const opciones = [
-      { id: "todos", nombre: traducir(textos.todos) },
-      ...carta.map(c => ({
-        id: c.id,
-        nombre: traducir(c.nombre)
-      }))
-    ];
+  return posicionA - posicionB;
+});
 
-    navegacion.innerHTML = opciones.map(op => `
-      <button type="button"
-              data-categoria="${escapar(op.id)}"
-              class="${op.id === categoriaActual ? "activo" : ""}"
-              aria-pressed="${op.id === categoriaActual}">
-        ${escapar(op.nombre)}
-      </button>
-    `).join("");
-  }
+// =========================================
+// COPIAR INGREDIENTES A LAS PINSAS
+// =========================================
 
-  function crearProducto(producto) {
-    const nombre = traducir(producto.nombre);
-    const descripcion = traducir(producto.descripcion);
+const categoriaFocaccias = carta.find(
+  categoria => categoria.id === "focaccias"
+);
 
-    let precioHTML = "";
+const categoriaPinsas = carta.find(
+  categoria => categoria.id === "pinsas"
+);
 
-    if (producto.llevar && typeof producto.llevar === "string") {
-      precioHTML = `
-        <p class="precio">
-          ${escapar(producto.precio)}
-          <span class="extra-precio">
-            ${escapar(traducir(textos.llevar))}:
-            ${escapar(producto.llevar)}
-          </span>
-        </p>
-      `;
-    } else if (producto.llevar && producto.llevar.copa) {
-      precioHTML = `
-        <p class="precio">
-          ${escapar(traducir(textos.botella))}:
-          ${escapar(producto.precio)}
-          <span class="extra-precio">
-            ${escapar(traducir(textos.copa))}:
-            ${escapar(producto.llevar.copa)}
-          </span>
-        </p>
-      `;
-    } else {
-      precioHTML = `<p class="precio">${escapar(producto.precio)}</p>`;
+if (categoriaFocaccias && categoriaPinsas) {
+
+  categoriaPinsas.productos.forEach(pinsa => {
+
+    const focacciaEquivalente =
+      categoriaFocaccias.productos.find(
+        focaccia =>
+          traducir(focaccia.nombre).toLowerCase() ===
+          traducir(pinsa.nombre).toLowerCase()
+      );
+
+    if (focacciaEquivalente) {
+      pinsa.descripcion =
+        focacciaEquivalente.descripcion;
     }
 
-    return `
-      <article class="producto">
-        <h3>${escapar(nombre)}</h3>
-        ${descripcion ? `<p>${escapar(descripcion)}</p>` : ""}
-        ${precioHTML}
-      </article>
-    `;
+  });
+
+}
+
+// =========================================
+// INICIALIZACIÓN
+// =========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const menu = document.getElementById("menu");
+  const categorias = document.getElementById("categorias");
+  const buscar = document.getElementById("buscar");
+  const sinResultados =
+    document.getElementById("sin-resultados");
+  const arriba = document.getElementById("arriba");
+
+  // Recuperar idioma guardado.
+  let idiomaGuardado;
+  try { idiomaGuardado = localStorage.getItem("doditaly-idioma"); } catch {}
+
+  if (idiomas.includes(idiomaGuardado)) {
+    idioma = idiomaGuardado;
   }
 
-  function crearMenu() {
-    menu.innerHTML = carta.map(categoria => `
-      <section class="seccion" id="${escapar(categoria.id)}">
-        <div class="seccion-cabecera">
-          ${categoria.imagen ? `
-            <img src="${escapar(categoria.imagen)}"
-                 alt="${escapar(traducir(categoria.nombre))}"
-                 loading="lazy">
-          ` : ""}
+  // =====================================
+  // TRADUCIR ELEMENTOS GENERALES
+  // =====================================
 
-          <h2>${escapar(traducir(categoria.nombre))}</h2>
-        </div>
+  function actualizarTextos() {
 
-        ${categoria.nota ? `
-          <p class="nota-categoria">
-            ${escapar(traducir(categoria.nota))}
-          </p>
-        ` : ""}
+    const elementos = {
+      "frase-portada": textos.portada,
+      "titulo-idioma": textos.idioma,
+      "titulo-busqueda": textos.buscar,
+      "titulo-aviso": textos.aviso,
+      "texto-aviso": textos.avisoTexto,
+      "texto-gluten": textos.gluten
+    };
 
-        <div class="productos">
-          ${categoria.productos.map(crearProducto).join("")}
-        </div>
-      </section>
-    `).join("");
+    Object.entries(elementos).forEach(
+      ([id, contenido]) => {
 
-    menu.querySelectorAll("img").forEach(img => {
-      img.addEventListener("error", () => {
-        img.hidden = true;
-      });
-      if (img.complete && img.naturalWidth === 0) {
-        img.hidden = true;
+        const elemento =
+          document.getElementById(id);
+
+        if (elemento) {
+          elemento.textContent =
+            traducir(contenido);
+        }
+
       }
+    );
+
+    if (buscar) {
+      buscar.placeholder =
+        traducir(textos.placeholder);
+    }
+
+    document.documentElement.lang = idioma;
+    const ui = interfaz[idioma];
+    document.getElementById("titulo-novedades").textContent = ui[0];
+    document.getElementById("resena-google").textContent = ui[1];
+    arriba.setAttribute("aria-label", ui[2]);
+    const lista = document.getElementById("lista-novedades");
+    lista.replaceChildren();
+    novedades.forEach(noticia => {
+      const articulo = document.createElement("article");
+      const titulo = document.createElement("h3");
+      const texto = document.createElement("p");
+      titulo.textContent = noticia.titulo[idioma] || noticia.titulo.ca;
+      texto.textContent = noticia.texto[idioma] || noticia.texto.ca;
+      articulo.append(titulo, texto);
+      lista.append(articulo);
     });
+    if (!novedades.length) lista.textContent = ui[3];
+
+    // Marcar idioma activo.
+    document.querySelectorAll(
+      "[data-lang]"
+    ).forEach(boton => {
+
+      const activo =
+        boton.dataset.lang === idioma;
+
+      boton.classList.toggle(
+        "activo",
+        activo
+      );
+
+      boton.classList.toggle(
+        "active",
+        activo
+      );
+
+      boton.setAttribute(
+        "aria-pressed",
+        String(activo)
+      );
+
+    });
+
+  }
+
+  // =====================================
+  // FORMATO DE PRECIOS
+  // =====================================
+
+  function mostrarPrecio(producto) {
+
+    let html = "";
+
+    const precioPrincipal =
+      (producto.precio === "Consultar precio" ? traducir(T("Consultar precio", "Chiedere il prezzo", "Ask for price", "Prix sur demande", "Preis auf Anfrage", "Consulteu el preu", "Уточните цену", "Consultar preço")) : producto.precio) || "";
+
+    const precioExtra =
+      producto.llevar;
+
+    if (precioPrincipal) {
+      html += `
+        <span class="precio">
+          ${escaparHTML(precioPrincipal)}
+        </span>
+      `;
+    }
+
+    // Precio para llevar.
+    if (
+      typeof precioExtra === "string" &&
+      precioExtra.trim()
+    ) {
+
+      html += `
+        <span class="precio-llevar">
+          ${escaparHTML(traducir(textos.llevar))}:
+          ${escaparHTML(precioExtra)}
+        </span>
+      `;
+
+    }
+
+    // Precio de copa en vinos.
+    if (
+      precioExtra &&
+      typeof precioExtra === "object" &&
+      !Array.isArray(precioExtra) &&
+      precioExtra.copa
+    ) {
+
+      html += `
+        <span class="precio-copa">
+          ${escaparHTML(traducir(textos.copa))}:
+          ${escaparHTML(precioExtra.copa)}
+        </span>
+      `;
+
+    }
+
+    return html;
+  }
+
+  // =====================================
+  // PROTEGER TEXTO HTML
+  // =====================================
+
+  function escaparHTML(valor) {
+
+    return String(valor ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+
+  }
+
+  // =====================================
+  // CREAR NAVEGACIÓN
+  // =====================================
+
+  function crearNavegacion() {
+
+    if (!categorias) return;
+
+    categorias.innerHTML = "";
+
+    const botonTodos =
+      document.createElement("button");
+
+    botonTodos.type = "button";
+    botonTodos.className = "categoria-btn";
+    botonTodos.dataset.categoria = "todos";
+    botonTodos.textContent =
+      traducir(textos.todos);
+
+    categorias.appendChild(botonTodos);
+
+    carta.forEach(categoria => {
+
+      const boton =
+        document.createElement("button");
+
+      boton.type = "button";
+      boton.className = "categoria-btn";
+      boton.dataset.categoria = categoria.id;
+
+      boton.textContent =
+        traducir(categoria.nombre);
+
+      categorias.appendChild(boton);
+
+    });
+
+    categorias.querySelectorAll(
+      "[data-categoria]"
+    ).forEach(boton => {
+
+      boton.addEventListener(
+        "click",
+        () => {
+
+          categoriaActual =
+            boton.dataset.categoria;
+
+          actualizarBotonesCategorias();
+          filtrarMenu();
+
+          if (menu) {
+            menu.scrollIntoView({
+              behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+              block: "start"
+            });
+          }
+
+        }
+      );
+
+    });
+
+    actualizarBotonesCategorias();
+  }
+
+  // =====================================
+  // CATEGORÍA ACTIVA
+  // =====================================
+
+  function actualizarBotonesCategorias() {
+
+    if (!categorias) return;
+
+    categorias.querySelectorAll(
+      "[data-categoria]"
+    ).forEach(boton => {
+
+      const activo =
+        boton.dataset.categoria ===
+        categoriaActual;
+
+      boton.classList.toggle(
+        "activo",
+        activo
+      );
+
+      boton.classList.toggle(
+        "active",
+        activo
+      );
+
+      boton.setAttribute(
+        "aria-pressed",
+        String(activo)
+      );
+
+    });
+
+  }
+
+  // =====================================
+  // CREAR TARJETA DE PRODUCTO
+  // =====================================
+
+  function crearProducto(producto) {
+
+    const articulo =
+      document.createElement("article");
+
+    articulo.className = "producto";
+
+    const nombre =
+      traducir(producto.nombre);
+
+    const descripcion =
+      traducir(producto.descripcion);
+
+    articulo.innerHTML = `
+      <div class="producto-info">
+
+        <h3 class="producto-nombre">
+          ${escaparHTML(nombre)}
+        </h3>
+
+        ${
+          descripcion
+            ? `
+              <p class="producto-descripcion">
+                ${escaparHTML(descripcion)}
+              </p>
+            `
+            : ""
+        }
+
+      </div>
+
+      <div class="producto-precios">
+        ${mostrarPrecio(producto)}
+      </div>
+    `;
+
+    return articulo;
+  }
+
+  // =====================================
+  // CREAR SECCIÓN DE CATEGORÍA
+  // =====================================
+
+  function crearSeccion(categoria) {
+
+    const seccion =
+      document.createElement("section");
+
+    seccion.className = "seccion-menu";
+    seccion.dataset.categoria = categoria.id;
+    seccion.id = `seccion-${categoria.id}`;
+
+    const titulo =
+      document.createElement("h2");
+
+    titulo.className = "titulo-categoria";
+    titulo.textContent =
+      traducir(categoria.nombre);
+
+    seccion.appendChild(titulo);
+
+    // Imagen de categoría.
+    if (categoria.imagen) {
+
+      const imagen =
+        document.createElement("img");
+
+      imagen.className = "imagen-categoria";
+      imagen.src = categoria.imagen;
+      imagen.alt =
+        traducir(categoria.nombre);
+
+      imagen.loading = "lazy";
+
+      imagen.onerror = () => {
+        imagen.remove();
+      };
+
+      seccion.appendChild(imagen);
+    }
+
+    // Nota de categoría.
+    if (categoria.nota) {
+
+      const nota =
+        document.createElement("p");
+
+      nota.className = "nota-categoria";
+      nota.textContent =
+        traducir(categoria.nota);
+
+      seccion.appendChild(nota);
+    }
+
+    const contenedor =
+      document.createElement("div");
+
+    contenedor.className =
+      "lista-productos";
+
+    categoria.productos.forEach(
+      producto => {
+
+        contenedor.appendChild(
+          crearProducto(producto)
+        );
+
+      }
+    );
+
+    seccion.appendChild(contenedor);
+
+    return seccion;
+  }
+
+  // =====================================
+  // RENDERIZAR MENÚ
+  // =====================================
+
+  function crearMenu() {
+
+    if (!menu) {
+      console.error(
+        "DODITALY: No existe el elemento #menu en index.html"
+      );
+      return;
+    }
+
+    menu.innerHTML = "";
+
+    carta.forEach(categoria => {
+
+      menu.appendChild(
+        crearSeccion(categoria)
+      );
+
+    });
+
+    filtrarMenu();
+  }
+
+  // =====================================
+  // BUSCADOR Y FILTROS
+  // =====================================
+
+  function normalizarTexto(valor) {
+
+    return String(valor ?? "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
+
   }
 
   function filtrarMenu() {
-    const consulta = normalizar(buscar.value.trim());
-    let resultados = 0;
 
-    carta.forEach(categoria => {
-      const seccion = document.getElementById(categoria.id);
-      const articulos = seccion.querySelectorAll(".producto");
+    if (!menu) return;
 
-      if (categoriaActual !== "todos" &&
-          categoriaActual !== categoria.id) {
+    const consulta = normalizarTexto(
+      buscar ? buscar.value : ""
+    );
+
+    let totalVisibles = 0;
+
+    menu.querySelectorAll(
+      ".seccion-menu"
+    ).forEach(seccion => {
+
+      const idCategoria =
+        seccion.dataset.categoria;
+
+      const categoria =
+        carta.find(
+          item => item.id === idCategoria
+        );
+
+      if (!categoria) {
         seccion.hidden = true;
         return;
       }
 
-      let visibles = 0;
+      const categoriaPermitida =
+        categoriaActual === "todos" ||
+        categoriaActual === idCategoria;
 
-      categoria.productos.forEach((producto, indice) => {
-        const contenido = [
-          traducir(producto.nombre),
-          traducir(producto.descripcion),
-          traducir(categoria.nombre)
-        ].join(" ");
+      let visiblesEnCategoria = 0;
 
-        const coincide = normalizar(contenido).includes(consulta);
+      const productosDOM =
+        seccion.querySelectorAll(
+          ".producto"
+        );
 
-        articulos[indice].hidden = !coincide;
+      productosDOM.forEach(
+        (articulo, indice) => {
 
-        if (coincide) {
-          visibles++;
-          resultados++;
+          const producto =
+            categoria.productos[indice];
+
+          if (!producto) {
+            articulo.hidden = true;
+            return;
+          }
+
+          const contenido = normalizarTexto([
+            traducir(producto.nombre),
+            traducir(producto.descripcion),
+            traducir(categoria.nombre)
+          ].join(" "));
+
+          const coincide =
+            !consulta ||
+            contenido.includes(consulta);
+
+          const visible =
+            categoriaPermitida &&
+            coincide;
+
+          articulo.hidden = !visible;
+
+          if (visible) {
+            visiblesEnCategoria++;
+            totalVisibles++;
+          }
+
         }
-      });
+      );
 
-      seccion.hidden = visibles === 0;
+      seccion.hidden =
+        !categoriaPermitida ||
+        visiblesEnCategoria === 0;
+
     });
 
-    sinResultados.hidden = resultados > 0;
+    if (sinResultados) {
+
+      sinResultados.hidden =
+        totalVisibles > 0;
+
+      sinResultados.textContent =
+        traducir(textos.sinResultados);
+
+    }
   }
 
-  function actualizarTextos() {
-    document.documentElement.lang = idioma;
-
-    document.getElementById("frase-portada").textContent =
-      traducir(textos.portada);
-
-    document.getElementById("titulo-idioma").textContent =
-      traducir(textos.idioma);
-
-    document.getElementById("titulo-busqueda").textContent =
-      traducir(textos.buscar);
-
-    buscar.placeholder = traducir(textos.placeholder);
-
-    sinResultados.textContent = traducir(textos.sinResultados);
-
-    document.getElementById("titulo-aviso").textContent =
-      traducir(textos.aviso);
-
-    document.getElementById("texto-aviso").textContent =
-      traducir(textos.avisoTexto);
-
-    document.getElementById("texto-gluten").textContent =
-      traducir(textos.gluten);
-
-    document.querySelectorAll("[data-lang]").forEach(boton => {
-      const activo = boton.dataset.lang === idioma;
-      boton.classList.toggle("activo", activo);
-      boton.setAttribute("aria-pressed", String(activo));
-    });
-  }
+  // =====================================
+  // CAMBIAR IDIOMA
+  // =====================================
 
   function cambiarIdioma(nuevoIdioma) {
-    if (!idiomas.includes(nuevoIdioma)) return;
+
+    if (!idiomas.includes(nuevoIdioma)) {
+      return;
+    }
 
     idioma = nuevoIdioma;
-    categoriaActual = "todos";
-    buscar.value = "";
 
-    try {
-      localStorage.setItem("doditaly_idioma", idioma);
-    } catch (error) {
-      // Continuar sin guardar preferencia.
-    }
+    try { localStorage.setItem("doditaly-idioma", idioma); } catch {}
 
     actualizarTextos();
     crearNavegacion();
     crearMenu();
-    filtrarMenu();
+
   }
 
-  // Botones de idiomas.
-  document.querySelectorAll("[data-lang]").forEach(boton => {
-    boton.addEventListener("click", () => {
-      cambiarIdioma(boton.dataset.lang);
-    });
+  // =====================================
+  // BOTONES DE IDIOMAS
+  // =====================================
+
+  document.querySelectorAll(
+    "[data-lang]"
+  ).forEach(boton => {
+
+    boton.addEventListener(
+      "click",
+      () => {
+
+        cambiarIdioma(
+          boton.dataset.lang
+        );
+
+      }
+    );
+
   });
 
-  // Botones de categorías.
-  navegacion.addEventListener("click", evento => {
-    const boton = evento.target.closest("button[data-categoria]");
-    if (!boton) return;
+  // =====================================
+  // EVENTO DEL BUSCADOR
+  // =====================================
 
-    categoriaActual = boton.dataset.categoria;
-    buscar.value = "";
+  if (buscar) {
 
-    crearNavegacion();
-    filtrarMenu();
+    buscar.addEventListener(
+      "input",
+      filtrarMenu
+    );
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  }
 
-  // Buscador.
-  buscar.addEventListener("input", () => {
-    categoriaActual = "todos";
-    crearNavegacion();
-    filtrarMenu();
-  });
+  // =====================================
+  // VOLVER ARRIBA
+  // =====================================
 
-  // Volver arriba.
-  arriba.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  if (arriba) {
 
-  window.addEventListener("scroll", () => {
-    arriba.classList.toggle("visible", window.scrollY > 350);
-  }, { passive: true });
+    arriba.addEventListener(
+      "click",
+      () => {
 
-  // Inicialización.
-  cambiarIdioma(idioma);
+        window.scrollTo({
+          top: 0,
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+        });
+
+      }
+    );
+
+  }
+
+  // =====================================
+  // ARRANQUE
+  // =====================================
+
+  const actualizarArriba = () => arriba.classList.toggle("visible", window.scrollY > 300);
+  window.addEventListener("scroll", actualizarArriba, { passive: true });
+  actualizarArriba();
+  actualizarTextos();
+  crearNavegacion();
+  crearMenu();
+
+  console.log(
+    "DODITALY: menú inicializado correctamente."
+  );
+
 });
+
+/* =========================================
+   FIN DEL SCRIPT.JS
+========================================= */
+

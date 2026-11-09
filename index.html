@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,8 +17,9 @@
       <span></span><span></span><span></span>
     </div>
 
+    <div class="logo-marco"><img class="logo-foto" src="images/logo-original.jpeg" alt="Logo DODITALY Focacceria, bandera italiana" width="1152" height="2048"></div>
     <p class="bienvenida">BENVENUTI A</p>
-    <h1>DODITALY</h1>
+    <h1 class="marca">DODITALY</h1>
     <p class="subtitulo">FOCACCERIA</p>
     <p class="lema">Un angolo d'Italia a Tarragona</p>
 
@@ -35,29 +36,31 @@
          onerror="this.hidden=true">
     <div class="presentacion-texto">
       <h2>Benvenuti!</h2>
-      <p id="frase-portada">Sabores auténticos de Italia</p>
+      <p id="frase-portada">Sabors autèntics d’Itàlia</p>
     </div>
   </section>
 
   <section class="idiomas" aria-label="Seleccionar idioma">
-    <h2 id="titulo-idioma">Elegí tu idioma</h2>
+    <h2 id="titulo-idioma">Tria el teu idioma</h2>
 
-    <div class="idiomas-grid">
-      <button type="button" data-lang="es">🇪🇸 Español</button>
-      <button type="button" data-lang="it">🇮🇹 Italiano</button>
-      <button type="button" data-lang="en">🇬🇧 English</button>
-      <button type="button" data-lang="fr">🇫🇷 Français</button>
-      <button type="button" data-lang="de">🇩🇪 Deutsch</button>
-      <button type="button" data-lang="ca">Català</button>
-      <button type="button" data-lang="ru">🇷🇺 Русский</button>
-      <button type="button" data-lang="pt">🇵🇹 Português</button>
-    </div>
+ 
+<div class="idiomas-grid">
+  <button type="button" data-lang="ca">Català</button>
+  <button type="button" data-lang="es">Castellano</button>
+  <button type="button" data-lang="it">Italiano</button>
+  <button type="button" data-lang="en">English</button>
+  <button type="button" data-lang="fr">Français</button>
+  <button type="button" data-lang="de">Deutsch</button>
+  <button type="button" data-lang="ru">Русский</button>
+  <button type="button" data-lang="pt">Português</button>
+</div>
+
   </section>
 
   <div class="busqueda">
-    <label id="titulo-busqueda" for="buscar">¿Qué te apetece hoy?</label>
+    <label id="titulo-busqueda" for="buscar">Què et ve de gust avui?</label>
     <input type="search" id="buscar"
-           placeholder="Buscar productos..."
+           placeholder="Cerca productes..."
            autocomplete="off">
   </div>
 
@@ -65,6 +68,13 @@
        aria-label="Categorías del menú"></nav>
 
   <main class="contenido">
+    <section class="novedades" aria-labelledby="titulo-novedades">
+      <h2 id="titulo-novedades">Novetats</h2>
+      <div class="novedad-destacada">
+        <a href="images/menu-italiano.jpeg" target="_blank" rel="noopener" aria-label="Menú italiano"><img src="images/menu-italiano.jpeg" alt="Menú italiano en tres pasos: antipasto, pasta casera, postre y bebida. Mínimo dos personas. Precio no indicado." width="698" height="997" loading="lazy"></a>
+        <div><p class="etiqueta">DODITALY · TARRAGONA</p><div id="lista-novedades"></div></div>
+      </div>
+    </section>
     <div id="menu"></div>
 
     <p id="sin-resultados" hidden>
@@ -82,6 +92,7 @@
     <h2>DODITALY FOCACCERIA</h2>
     <p>Carrer Cos del Bou, 4 · Tarragona</p>
     <p>Grazie e buon appetito!</p>
+    <a id="resena-google" class="boton-resena" href="https://www.google.com/maps/place/DODITALY+Focacceria+Italiana/@41.116719,1.2536186,17z/data=!4m8!3m7!1s0x12a3fd0070d375f5:0xd132a7c042bbaeab!8m2!3d41.116715!4d1.2561935!9m1!1b1!16s%2Fg%2F11ydvj7xhc" target="_blank" rel="noopener noreferrer">Escriu una ressenya a Google</a>
     <a href="https://www.instagram.com/doditaly_focacceria/"
        target="_blank" rel="noopener noreferrer">
       Instagram

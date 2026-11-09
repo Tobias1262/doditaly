@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Caveat:wght@600;700&family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 
 :root {
   --verde: #07543c;
@@ -1248,3 +1248,186 @@ footer a:hover {
     transition-duration: 0s !important;
   }
 }
+
+
+/* =========================================
+   DODITALY — CORRECCIÓN RESPONSIVE
+   Compatible con script.js (bloque 6)
+========================================= */
+
+/* Contenedor de cada categoría */
+.seccion-menu {
+  max-width: 950px;
+  margin: 0 auto 32px;
+  padding: 28px;
+  background: var(--blanco, #fffdf8);
+  border: 1px solid var(--borde, #e2d6c0);
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(38, 44, 28, .08);
+  scroll-margin-top: 95px;
+}
+
+/* Títulos de categorías */
+.titulo-categoria {
+  color: var(--verde, #07543c);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(27px, 4vw, 38px);
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin: 0 0 22px;
+}
+
+.titulo-categoria::after {
+  content: "";
+  display: block;
+  width: 75px;
+  height: 3px;
+  margin: 15px auto 0;
+  background: var(--rojo, #b6382b);
+  border-radius: 10px;
+}
+
+/* Fotos de las categorías */
+.imagen-categoria {
+  display: block;
+  width: 100%;
+  max-width: 650px;
+  height: 260px;
+  margin: 0 auto 25px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+}
+
+/* Productos */
+.lista-productos {
+  width: 100%;
+}
+
+.producto {
+  padding: 18px 12px;
+  border-bottom: 1px solid var(--borde, #e2d6c0);
+}
+
+.producto:last-child {
+  border-bottom: none;
+}
+
+.producto-nombre {
+  font-size: 20px;
+  line-height: 1.35;
+  color: var(--verde-oscuro, #043a2a);
+  margin-bottom: 7px;
+}
+
+.producto-descripcion {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--gris, #70695e);
+}
+
+/* Precios */
+.producto-precios {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  margin-top: 9px;
+}
+
+.producto .precio {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--rojo, #b6382b);
+}
+
+.precio-llevar,
+.precio-copa {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gris, #70695e);
+}
+
+/* Navegación activa */
+.categorias button.active,
+.categorias button.activo {
+  background: var(--verde, #07543c);
+  color: white;
+  border-color: var(--verde, #07543c);
+}
+
+/* Adaptación a móviles */
+@media (max-width: 600px) {
+
+  .contenido {
+    padding: 18px 12px 40px;
+  }
+
+  .seccion-menu {
+    padding: 18px 14px;
+    margin-bottom: 22px;
+    border-radius: 15px;
+    scroll-margin-top: 80px;
+  }
+
+  .titulo-categoria {
+    font-size: 27px;
+    margin-bottom: 17px;
+  }
+
+  .imagen-categoria {
+    height: 185px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+  }
+
+  .producto {
+    padding: 16px 4px;
+  }
+
+  .producto-nombre {
+    font-size: 19px;
+  }
+
+  .producto-descripcion {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .producto .precio {
+    font-size: 18px;
+  }
+
+  .precio-llevar,
+  .precio-copa {
+    font-size: 13px;
+  }
+}
+
+/* Novedades y accesibilidad */
+.novedades { padding: 24px; margin-bottom: 24px; border: 1px solid #ba9a56; border-radius: 16px; background: #fffaf0; color: #07543c; }
+.boton-resena { display: inline-block; padding: 12px 18px; margin: 12px; border: 1px solid #ba9a56; border-radius: 24px; }
+button, input, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid #ba9a56; outline-offset: 4px; }
+.producto, .producto-nombre { overflow-wrap: anywhere; }
+img { max-width: 100%; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+
+/* Identidad DODITALY: foto original del rótulo y letras de inspiración italiana. */
+.logo-marco { position:relative; width:180px; height:180px; margin:0 auto 24px; overflow:hidden; border-radius:50%; border:3px solid var(--dorado); box-shadow:0 12px 36px #0005; }
+.logo-foto { position:absolute; width:112%; max-width:none; height:auto; left:-6%; top:-34%; }
+.portada .marca { font-family:'Barlow Condensed',Impact,'Arial Narrow',sans-serif; font-weight:900; letter-spacing:.055em; font-size:clamp(56px,12vw,116px); line-height:1; }
+.lema, .bienvenida, .presentacion h2 { font-family:'Caveat','Segoe Print',cursive; }
+.lema { font-size:clamp(25px,5vw,36px); }
+.novedades > h2 { font-size:clamp(28px,5vw,40px); margin-bottom:20px; }
+.novedad-destacada { display:grid; grid-template-columns:minmax(180px,280px) minmax(0,1fr); align-items:center; gap:32px; }
+.novedad-destacada img { display:block; width:100%; height:auto; border-radius:8px; box-shadow:var(--sombra); }
+.novedad-destacada h3 { font-size:clamp(24px,4vw,36px); line-height:1.25; margin:12px 0; }
+.etiqueta { color:var(--verde); font-size:12px; font-weight:800; letter-spacing:.18em; }
+.imagen-categoria { object-position:center; }
+.boton-resena { color:var(--crema); background:var(--verde); }
+button { min-height:44px; }
+@media(max-width:600px) { .portada { padding:38px 16px 48px; } .logo-marco { width:140px; height:140px; } .novedad-destacada { grid-template-columns:1fr; gap:20px; } .novedad-destacada > a { width:min(100%,280px); margin:auto; } .novedades { padding:20px 16px; } }

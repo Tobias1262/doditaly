@@ -1,0 +1,36 @@
+DODITALY — Entrega actualizada
+
+Se modificaron directamente index.html, style.css y script.js en Focacceria. Los originales de Escritorio no se han sobrescrito.
+
+CAMBIOS
+- Corregido HTML corrupto y botón Castellano que apuntaba por error a catalán.
+- Catalán inicial, castellano segundo; ocho idiomas conservados. El orden interno de los arrays de traducciones se mantiene para no cruzar idiomas.
+- Logo original integrado en cabecera con encuadre circular mediante CSS. No se redibujó ni alteró la foto original.
+- Letras condensadas para la marca y manuscritas para bienvenida y lema, inspiradas en las referencias. No se dispone de la fuente exacta del logo; su lettering auténtico está conservado dentro de la foto.
+- Las seis imágenes nuevas están integradas: logo, postres, pastas, pinsas, focaccias y cartel de menú italiano.
+- Novedades contiene la propuesta del cartel en ocho idiomas, sin inventar un precio. Precio y disponibilidad se consultan en el local.
+- Enlace de reseñas de Google facilitado por el usuario, sin modificar.
+- Volver arriba se muestra tras 300 píxeles de desplazamiento; respeta la preferencia de movimiento reducido.
+- Mejoras de foco accesible, tamaños táctiles, ajuste de textos y presentación móvil de Novedades.
+- El menú tolera el bloqueo del almacenamiento local.
+
+VERIFICACIÓN
+- JavaScript sin errores de sintaxis.
+- Prueba funcional con DOM simulado: ocho idiomas, búsqueda con y sin resultados, Novedades, 11 categorías, 68 productos, almacenamiento bloqueado y volver arriba. Archivo verificar.cjs incluido como comprobación reproducible.
+- Referencias locales presentes y selector de idiomas con ocho claves distintas en el orden correcto.
+- No se completó la revisión visual: el navegador de vista previa no pudo conectar con el servidor local.
+- No se publicó ni verificó un despliegue real de GitHub Pages. Se usan archivos estáticos y rutas relativas compatibles con su estructura.
+
+PENDIENTES DE CONTENIDO
+- Falta la carta física completa. Los seis adjuntos nuevos no incluyen una carta con listado de productos y precios: son fotos y un cartel promocional.
+- Margherita: ingredientes pendientes y precio a consultar.
+- Margherita con prosciutto: ingredientes y tipo de prosciutto pendientes; 15,00 € es el precio que ya figuraba en el archivo original y no se ha cotejado.
+- Se conserva la regla original que copia ingredientes de focaccias a pinsas con el mismo nombre. Confirmar con la carta física que esa equivalencia es correcta.
+- Se conservan productos, ingredientes y precios existentes: no se certifican contra una carta aún no recibida. Falta revisar la exactitud lingüística contra esa fuente.
+- Las fuentes Google Fonts necesitan conexión; hay alternativas locales de respaldo.
+
+CÓMO EDITAR NOVEDADES
+Al principio de script.js, editar const novedades. Cada objeto tiene titulo y texto con claves ca, es, it, en, fr, de, ru y pt. El cartel se encuentra en index.html dentro de novedad-destacada. No escribir etiquetas HTML dentro de los textos: se insertan de forma segura como texto.
+
+PUBLICACIÓN
+Subir index.html, style.css, script.js y toda la carpeta images a la carpeta de publicación. Mantener exactamente los nombres. No se requiere compilación. verificar.cjs e INFORME.txt son documentación, no dependencias de la página.
