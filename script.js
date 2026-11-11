@@ -179,19 +179,18 @@ const textos = {
     "Если у вас есть пищевая аллергия или непереносимость, сообщите персоналу перед заказом.",
     "Se tiver alergias ou intolerâncias alimentares, consulte a nossa equipa antes de pedir."
   ),
-
   gluten: T(
-    "Los productos sin gluten pueden estar expuestos a contaminación cruzada.",
-    "I prodotti senza glutine possono essere soggetti a contaminazione crociata.",
-    "Gluten-free products may be subject to cross-contamination.",
-    "Les produits sans gluten peuvent subir une contamination croisée.",
-    "Glutenfreie Produkte können Kreuzkontaminationen ausgesetzt sein.",
-    "Els productes sense gluten poden patir contaminació encreuada.",
-    "Продукты без глютена могут подвергаться перекрёстному загрязнению.",
-    "Os produtos sem glúten podem estar sujeitos a contaminação cruzada."
+    "Tenemos opciones sin gluten, pero no garantizamos la ausencia de trazas por contaminación cruzada en cocina. Las pinsas y focaccias sin gluten llevan suplemento. Consulta al personal antes de ordenar.",
+    "Abbiamo opzioni senza glutine, ma non garantiamo l’assenza di tracce dovute a contaminazione crociata in cucina. Le pinse e focacce senza glutine prevedono un supplemento. Consulta il personale prima di ordinare.",
+    "Gluten-free options are available, but we cannot guarantee the absence of traces from cross-contamination in the kitchen. A surcharge applies to gluten-free pinsas and focaccias. Ask staff before ordering.",
+    "Des options sans gluten sont proposées, mais l’absence de traces dues à la contamination croisée en cuisine n’est pas garantie. Un supplément s’applique aux pinsas et focaccias sans gluten. Consultez le personnel avant de commander.",
+    "Glutenfreie Optionen sind erhältlich, die Abwesenheit von Spuren durch Kreuzkontamination in der Küche ist jedoch nicht garantiert. Für glutenfreie Pinsa und Focaccia fällt ein Aufpreis an. Bitte vor der Bestellung das Personal fragen.",
+    "Tenim opcions sense gluten, però no garantim l’absència de traces per contaminació encreuada a la cuina. Les pinses i focaccies sense gluten porten suplement. Consulta el personal abans de demanar.",
+    "Есть безглютеновые варианты, но отсутствие следов из-за перекрёстного загрязнения на кухне не гарантируется. За безглютеновые пинсу и фокаччу взимается доплата. Уточняйте у персонала до заказа.",
+    "Temos opções sem glúten, mas não garantimos a ausência de vestígios por contaminação cruzada na cozinha. Pinsas e focaccias sem glúten têm suplemento. Consulte a equipa antes de pedir."
   )
+  
 };
-
 // =====================================
 // FUNCIÓN PARA CREAR PRODUCTOS
 // =====================================
@@ -271,7 +270,7 @@ const carta = [
         "Tomàquet, mozzarella de búfala, fulles verdes, olives i pesto.",
         "Помидоры, буйволиная моцарелла, зелень, оливки и песто.",
         "Tomate, mozzarella de búfala, salada verde, azeitonas e pesto."
-      ), "14,00 €"),
+      ), "14,50 €"),
 
       P("Ensalada César", T(
         "Hojas verdes, pollo, parmesano, pan tostado y salsa César.",
@@ -304,7 +303,7 @@ const carta = [
         "Albergínies amb salsa de tomàquet, mozzarella i parmesà.",
         "Баклажаны с томатным соусом, моцареллой и пармезаном.",
         "Beringela com molho de tomate, mozzarella e parmesão."
-      ), "16,00 €")
+      ), "14,50 €")
 
     ]
   },
@@ -349,7 +348,7 @@ const carta = [
         "Selecció d'embotits italians, olives i focaccia casolana.",
         "Ассорти итальянских мясных деликатесов, оливки и домашняя фокачча.",
         "Seleção de enchidos italianos, azeitonas e focaccia caseira."
-      ), "16,50 €"),
+      ), "17,50 €"),
 
       P("Formaggi", T(
         "Selección de quesos italianos, aceitunas y pan de focaccia casera.",
@@ -436,7 +435,7 @@ const carta = [
         "Carbassó a la graella, albergínies rostides, tomàquet, ruca, crema de tòfona i mozzarella de búfala.",
         "Цукини на гриле, запечённые баклажаны, помидор, руккола, трюфельный крем и буйволиная моцарелла.",
         "Curgete grelhada, beringela assada, tomate, rúcula, creme de trufa e mozzarella de búfala."
-      ), "12,00 €", "9,50 €"),
+      ), "13,00 €", "10,00 €"),
 
       P("Giovanni", T(
         "Salami Milano, tomates secos, berenjenas asadas y crema de pecorino.",
@@ -458,7 +457,7 @@ const carta = [
         "Porchetta d'Ariccia, albergínies rostides, tomàquets secs i ricotta cremosa.",
         "Поркетта из Ариччи, запечённые баклажаны, вяленые томаты и нежная рикотта.",
         "Porchetta de Ariccia, beringela assada, tomate seco e ricota cremosa."
-      ), "13,00 €", "10,50 €"),
+      ), "13,50 €", "10,50 €"),
 
       P("Pietro", T(
         "Speck italiano, queso de búfala, rúcula y pasta de aceitunas negras.",
@@ -480,18 +479,8 @@ const carta = [
         "Spianata picant, pebrots escalivats, olives negres i crema de 'nduja calabresa.",
         "Острая салями спьяната, запечённый перец, чёрные оливки и калабрийский крем ндуя.",
         "Spianata picante, pimentos assados, azeitonas pretas e creme de 'nduja da Calábria."
-      ), "12,50 €", "9,50 €"),
+      ), "13,00 €", "10,00 €"),
 
-      P("Francesco", T(
-        "Cotoletta estilo pizzaiola, salsa de tomate, jamón cocido, mozzarella gratinada y hojas verdes.",
-        "Cotoletta alla pizzaiola, salsa di pomodoro, prosciutto cotto, mozzarella gratinata e insalata mista.",
-        "Breaded cutlet pizzaiola-style, tomato sauce, cooked ham, melted mozzarella and mixed greens.",
-        "Escalope panée façon pizzaiola, sauce tomate, jambon cuit, mozzarella gratinée et salade verte.",
-        "Paniertes Schnitzel nach Pizzaiola-Art, Tomatensauce, Kochschinken, überbackener Mozzarella und Blattsalat.",
-        "Escalopa arrebossada a la pizzaiola, salsa de tomàquet, pernil cuit, mozzarella gratinada i fulles verdes.",
-        "Отбивная в панировке по-пиццайольски, томатный соус, варёная ветчина, запечённая моцарелла и зелень.",
-        "Panado à pizzaiola, molho de tomate, fiambre, mozzarella gratinada e folhas verdes."
-      ), "15,00 €", "11,50 €")
 
     ]
   },
@@ -522,7 +511,7 @@ const carta = [
       P("Domenico", "", "15,00 €"),
       P("Fabrizio", "", "15,00 €"),
       P("Pietro", "", "15,00 €"),
-      P("Giacomo", "", "14,00 €"),
+      P("Giacomo", "", "15,00 €"),
       P("Giovanni", "", "15,00 €"),
       P("Salvatore", "", "15,00 €"),
       P("Giuseppe", "", "16,00 €"),
@@ -541,7 +530,6 @@ const carta = [
 
     ]
   },
-
 
   // =====================================
   // 5. PASTAS
@@ -564,19 +552,19 @@ const carta = [
     imagen: "images/pastas.jpeg",
 
     nota: T(
-      "Salsas a elección: pomodoro, pesto, scarparo, putanesca o ajo, aceite y guindilla.",
-      "Salse a scelta: pomodoro, pesto, scarparo, puttanesca o aglio, olio e peperoncino.",
-      "Choose your sauce: tomato, pesto, scarparo, puttanesca or garlic, olive oil and chilli.",
-      "Sauces au choix : tomate, pesto, scarparo, puttanesca ou ail, huile d'olive et piment.",
-      "Sauce nach Wahl: Tomate, Pesto, Scarparo, Puttanesca oder Knoblauch, Olivenöl und Chili.",
-      "Salses a escollir: tomàquet, pesto, scarparo, puttanesca o all, oli i bitxo.",
-      "Соусы на выбор: томатный, песто, скарпаро, путтанеска или чеснок с оливковым маслом и чили.",
-      "Molhos à escolha: tomate, pesto, scarparo, puttanesca ou alho, azeite e malagueta."
+      "Salsas a elección: Pomodoro classica · Pesto · Puttanesca · Scarparo a’ll uso nostro · Carbonara italiana · Amalfitana · Ragù alla bolognese · Quattro formaggi.",
+      "Salse a scelta: Pomodoro classica · Pesto · Puttanesca · Scarparo a’ll uso nostro · Carbonara italiana · Amalfitana · Ragù alla bolognese · Quattro formaggi.",
+      "Choice of sauces: Pomodoro classica · Pesto · Puttanesca · Scarparo a’ll uso nostro · Carbonara italiana · Amalfitana · Ragù alla bolognese · Quattro formaggi.",
+      "Sauces au choix : Pomodoro classica · Pesto · Puttanesca · Scarparo a’ll uso nostro · Carbonara italiana · Amalfitana · Ragù alla bolognese · Quattro formaggi.",
+      "Saucen zur Wahl: Pomodoro classica · Pesto · Puttanesca · Scarparo a’ll uso nostro · Carbonara italiana · Amalfitana · Ragù alla bolognese · Quattro formaggi.",
+      "Salses a escollir: Pomodoro classica · Pesto · Puttanesca · Scarparo a’ll uso nostro · Carbonara italiana · Amalfitana · Ragù alla bolognese · Quattro formaggi.",
+      "Соусы на выбор: Pomodoro classica · Pesto · Puttanesca · Scarparo a’ll uso nostro · Carbonara italiana · Amalfitana · Ragù alla bolognese · Quattro formaggi.",
+      "Molhos à escolha: Pomodoro classica · Pesto · Puttanesca · Scarparo a’ll uso nostro · Carbonara italiana · Amalfitana · Ragù alla bolognese · Quattro formaggi."
     ),
 
     productos: [
 
-      P("Tortellini", T(
+      P("Ravioli", T(
         "Pasta fresca rellena de ricotta y espinacas.",
         "Pasta fresca ripiena di ricotta e spinaci.",
         "Fresh pasta filled with ricotta and spinach.",
@@ -587,27 +575,82 @@ const carta = [
         "Massa fresca recheada com ricota e espinafres."
       ), "15,00 €"),
 
+      P("Mezzaluna neri di sepia", T(
+        "Pasta fresca rellena de salmón y queso robiola.",
+        "Pasta fresca ripiena di salmone e robiola.",
+        "Fresh pasta filled with salmon and robiola cheese.",
+        "Pâtes fraîches farcies au saumon et au fromage robiola.",
+        "Frische Pasta mit Lachs und Robiola-Käse gefüllt.",
+        "Pasta fresca farcida de salmó i formatge robiola.",
+        "Свежая паста с начинкой из лосося и сыра робиола.",
+        "Massa fresca recheada com salmão e queijo robiola."
+      ), "17,00 €"),
+
+      P("Capelaccio", T(
+        "Pasta fresca rellena de carne braseada.",
+        "Pasta fresca ripiena di carne brasata.",
+        "Fresh pasta filled with braised meat.",
+        "Pâtes fraîches farcies à la viande braisée.",
+        "Frische Pasta mit geschmortem Fleisch gefüllt.",
+        "Pasta fresca farcida de carn brasejada.",
+        "Свежая паста с начинкой из тушёного мяса.",
+        "Massa fresca recheada com carne braseada."
+      ), "17,00 €"),
+
       P("Rigatoni", T(
-        "Pasta seca cocida al dente.",
-        "Pasta secca cotta al dente.",
+        "Pasta seca cocida en su punto.",
+        "Pasta secca cotta al punto giusto.",
         "Dried pasta cooked al dente.",
-        "Pâtes sèches cuites al dente.",
-        "Getrocknete Pasta, al dente gekocht.",
-        "Pasta seca cuita al dente.",
-        "Паста из сухих макарон, приготовленная аль денте.",
-        "Massa seca cozida al dente."
-      ), "14,00 €"),
+        "Pâtes sèches cuites à point.",
+        "Getrocknete Pasta, auf den Punkt gekocht.",
+        "Pasta seca cuita al punt.",
+        "Сухая паста, приготовленная до нужной степени.",
+        "Massa seca cozida no ponto."
+      ), "14,50 €"),
 
       P("Lasagna", T(
-        "Lasaña con ragú de carne.",
-        "Lasagna al ragù di carne.",
-        "Lasagne with meat ragù.",
-        "Lasagnes au ragù de viande.",
-        "Lasagne mit Fleischragout.",
-        "Lasanya amb ragú de carn.",
-        "Лазанья с мясным рагу.",
-        "Lasanha com ragu de carne."
-      ), "16,00 €")
+        "Lasaña con ragú y bechamel.",
+        "Lasagna con ragù e besciamella.",
+        "Lasagne with ragù and béchamel.",
+        "Lasagnes au ragù et à la béchamel.",
+        "Lasagne mit Ragout und Béchamelsauce.",
+        "Lasanya amb ragú i beixamel.",
+        "Лазанья с рагу и соусом бешамель.",
+        "Lasanha com ragu e bechamel."
+      ), "16,50 €"),
+
+      P("Spaghetti", T(
+        "Pasta seca cocida en su punto.",
+        "Pasta secca cotta al punto giusto.",
+        "Dried pasta cooked al dente.",
+        "Pâtes sèches cuites à point.",
+        "Getrocknete Pasta, auf den Punkt gekocht.",
+        "Pasta seca cuita al punt.",
+        "Сухая паста, приготовленная до нужной степени.",
+        "Massa seca cozida no ponto."
+      ), "15,50 €"),
+
+      P("Fusilli", T(
+        "Pasta seca cocida en su punto.",
+        "Pasta secca cotta al punto giusto.",
+        "Dried pasta cooked al dente.",
+        "Pâtes sèches cuites à point.",
+        "Getrocknete Pasta, auf den Punkt gekocht.",
+        "Pasta seca cuita al punt.",
+        "Сухая паста, приготовленная до нужной степени.",
+        "Massa seca cozida no ponto."
+      ), "15,50 €"),
+
+      P("Gnocchi de patata ripieno", T(
+        "Gnocchi de patata rellenos de quesos italianos.",
+        "Gnocchi di patate ripieni di formaggi italiani.",
+        "Potato gnocchi filled with Italian cheeses.",
+        "Gnocchis de pomme de terre farcis aux fromages italiens.",
+        "Kartoffelgnocchi mit italienischen Käsesorten gefüllt.",
+        "Nyoquis de patata farcits de formatges italians.",
+        "Картофельные ньокки с начинкой из итальянских сыров.",
+        "Gnocchi de batata recheados com queijos italianos."
+      ), "16,50 €")
 
     ]
   },
@@ -840,7 +883,8 @@ const carta = [
   // =====================================
 
   {
-    id: "cervezas",
+        id: "cervezas",
+    imagen: "images/cervezas.jpeg",
 
     nombre: T(
       "Cervezas", "Birre", "Beers", "Bières",
@@ -870,7 +914,22 @@ const carta = [
 
       P("Damm Lemon 0,33 L", "", "2,70 €"),
 
-      P("Free Damm 0,0 0,33 L", "", "2,80 €")
+       P("Free Damm 0,0 0,33 L", "", "2,80 €"),
+
+
+      P(T(
+        "Cerveza sin gluten 0,33 L",
+        "Birra senza glutine 0,33 L",
+        "Gluten-free beer 0.33 L",
+        "Bière sans gluten 0,33 L",
+        "Glutenfreies Bier 0,33 L",
+        "Cervesa sense gluten 0,33 L",
+        "Безглютеновое пиво 0,33 л",
+        "Cerveja sem glúten 0,33 L"
+      ), "", "3,50 €")
+      
+      
+
 
     ]
   },
@@ -880,8 +939,8 @@ const carta = [
   // =====================================
 
   {
-    id: "vinos",
-
+        id: "vinos",
+    imagen: "images/vinos.jpeg",
     nombre: T(
       "Vinos", "Vini", "Wines", "Vins",
       "Weine", "Vins", "Вина", "Vinhos"
@@ -964,6 +1023,17 @@ const carta = [
         "Escumós · Itàlia",
         "Игристое · Италия",
         "Espumante · Itália"
+      ), "19,00 €"),
+
+        P("Lambrusco", T(
+        "Espumoso · Italia",
+        "Spumante · Italia",
+        "Sparkling · Italy",
+        "Pétillant · Italie",
+        "Schaumwein · Italien",
+        "Escumós · Itàlia",
+        "Игристое · Италия",
+        "Espumante · Itália"
       ), "19,00 €")
 
     ]
@@ -987,8 +1057,7 @@ const carta = [
       "Cocktails"
     ),
 
-    imagen: "images/aperol.jpg",
-
+      imagen: "images/cocteles.jpeg",
     productos: [
 
       P("Aperol Spritz", T(
@@ -1182,6 +1251,20 @@ document.addEventListener("DOMContentLoaded", () => {
       buscar.placeholder =
         traducir(textos.placeholder);
     }
+
+    const reservasTextos = {
+      ca: { titulo: "Reserves", llamar: "Truca per reservar", whatsapp: "Reserva per WhatsApp" },
+      es: { titulo: "Reservas", llamar: "Llamar para reservar", whatsapp: "Reservar por WhatsApp" },
+      it: { titulo: "Prenotazioni", llamar: "Chiama per prenotare", whatsapp: "Prenota su WhatsApp" },
+      en: { titulo: "Reservations", llamar: "Call to book", whatsapp: "Book on WhatsApp" },
+      fr: { titulo: "Réservations", llamar: "Appeler pour réserver", whatsapp: "Réserver sur WhatsApp" },
+      de: { titulo: "Reservierungen", llamar: "Anrufen und reservieren", whatsapp: "Über WhatsApp reservieren" },
+      ru: { titulo: "Бронирование", llamar: "Забронировать по телефону", whatsapp: "Забронировать в WhatsApp" },
+      pt: { titulo: "Reservas", llamar: "Ligar para reservar", whatsapp: "Reservar pelo WhatsApp" }
+    };
+    document.querySelectorAll("[data-reserva]").forEach(elemento => {
+      elemento.textContent = reservasTextos[idioma][elemento.dataset.reserva];
+    });
 
     document.documentElement.lang = idioma;
     const ui = interfaz[idioma];

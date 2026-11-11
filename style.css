@@ -1431,3 +1431,47 @@ img { max-width: 100%; }
 .boton-resena { color:var(--crema); background:var(--verde); }
 button { min-height:44px; }
 @media(max-width:600px) { .portada { padding:38px 16px 48px; } .logo-marco { width:140px; height:140px; } .novedad-destacada { grid-template-columns:1fr; gap:20px; } .novedad-destacada > a { width:min(100%,280px); margin:auto; } .novedades { padding:20px 16px; } }
+
+/* Banderas del selector de idiomas */
+.idiomas-grid button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+}
+
+.bandera-idioma {
+  display: block;
+  width: 32px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+#seccion-vinos .imagen-categoria,
+#seccion-cervezas .imagen-categoria,
+#seccion-cocteles .imagen-categoria {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+/* Reservas por llamada y WhatsApp */
+.reservas-contacto { margin: 28px auto 0; text-align: center; }
+.reservas-titulo { font-weight: 700; font-size: 20px; }
+.reservas-numero { margin: 4px 0 14px; font-size: 18px; letter-spacing: .04em; }
+.reservas-botones { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.reserva-enlace { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 20px; border: 1px solid var(--dorado, #c4a46b); border-radius: 28px; font-weight: 700; text-decoration: none; line-height: 1.4; }
+.reserva-llamar { color: #07543c; background: #fff8e8; }
+.reserva-whatsapp { color: #fff; background: #07543c; }
+.reserva-enlace:hover { box-shadow: 0 4px 16px #0003; }
+.reserva-enlace:focus-visible { outline: 3px solid #c4a46b; outline-offset: 4px; }
+@media (max-width: 480px) { .reservas-botones { flex-direction: column; align-items: center; } .reserva-enlace { width: min(100%, 300px); } }
+
+/* Quitar adornos superpuestos de la cabecera */
+.portada::before,
+.portada::after {
+  content: none;
+}
